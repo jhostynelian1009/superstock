@@ -1,0 +1,3 @@
+# Base de datos local — no versionar (usar migraciones + seeders)
+*.sqlite*
+database.sqlite

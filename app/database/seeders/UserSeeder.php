@@ -10,26 +10,36 @@ class UserSeeder extends Seeder
 {
     public function run(): void
     {
+        // Administrador
         User::query()->updateOrCreate(
-            ['email' => 'admin@snackconnect.com'],
+            ['email' => 'admin@superstock.com'],
             [
-                'name' => 'Administrador',
-                'document_number' => '0000000000',
-                'phone' => '0999999999',
+                'name' => 'Administrador General',
                 'password' => Hash::make('password'),
                 'role' => User::ROLE_ADMIN,
-                'is_primary_admin' => true,
+                'is_active' => true,
             ]
         );
 
+        // Empleado 1
         User::query()->updateOrCreate(
-            ['email' => 'cliente@snackconnect.com'],
+            ['email' => 'empleado1@superstock.com'],
             [
-                'name' => 'Cliente Demo',
-                'document_number' => '1234567890',
-                'phone' => '0988128034',
+                'name' => 'Juan Pérez',
                 'password' => Hash::make('password'),
-                'role' => User::ROLE_CLIENT,
+                'role' => User::ROLE_EMPLOYEE,
+                'is_active' => true,
+            ]
+        );
+
+        // Empleado 2
+        User::query()->updateOrCreate(
+            ['email' => 'empleado2@superstock.com'],
+            [
+                'name' => 'María López',
+                'password' => Hash::make('password'),
+                'role' => User::ROLE_EMPLOYEE,
+                'is_active' => true,
             ]
         );
     }

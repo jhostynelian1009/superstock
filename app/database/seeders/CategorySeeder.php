@@ -11,30 +11,34 @@ class CategorySeeder extends Seeder
     {
         $categories = [
             [
-                'name' => 'Dulces',
-                'slug' => 'dulces',
-                'description' => 'Snacks y postres dulces para todos los gustos.',
-            ],
-            [
-                'name' => 'Salados',
-                'slug' => 'salados',
-                'description' => 'Papas, nachos y botanas saladas.',
+                'name' => 'Lácteos',
+                'description' => 'Leche, quesos, yogures y derivados lácteos.',
             ],
             [
                 'name' => 'Bebidas',
-                'slug' => 'bebidas',
-                'description' => 'Refrescos, jugos y bebidas frías o calientes.',
+                'description' => 'Agua, refrescos, jugos y bebidas energéticas.',
             ],
             [
-                'name' => 'Saludables',
-                'slug' => 'saludables',
-                'description' => 'Opciones más ligeras y nutritivas.',
+                'name' => 'Limpieza',
+                'description' => 'Artículos de aseo hogar y desinfectantes.',
+            ],
+            [
+                'name' => 'Carnes',
+                'description' => 'Carnes rojas, pollo, cerdo y embutidos.',
+            ],
+            [
+                'name' => 'Frutas',
+                'description' => 'Frutas frescas locales e importadas.',
+            ],
+            [
+                'name' => 'Verduras',
+                'description' => 'Vegetales, hortalizas y legumbres frescas.',
             ],
         ];
 
         foreach ($categories as $category) {
             Category::query()->updateOrCreate(
-                ['slug' => $category['slug']],
+                ['name' => $category['name']],
                 $category
             );
         }

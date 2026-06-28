@@ -26,11 +26,9 @@ class UserFactory extends Factory
     {
         return [
             'name' => fake()->name(),
-            'document_number' => fake()->unique()->numerify('##########'),
-            'phone' => fake()->numerify('09########'),
             'email' => fake()->unique()->safeEmail(),
-            'role' => User::ROLE_CLIENT,
-            'is_primary_admin' => false,
+            'role' => User::ROLE_EMPLOYEE,
+            'is_active' => true,
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
             'remember_token' => Str::random(10),
@@ -41,22 +39,20 @@ class UserFactory extends Factory
     {
         return $this->state(fn () => [
             'role' => User::ROLE_ADMIN,
-            'is_primary_admin' => false,
         ]);
     }
 
-    public function primaryAdmin(): static
+    public function employee(): static
     {
         return $this->state(fn () => [
-            'role' => User::ROLE_ADMIN,
-            'is_primary_admin' => true,
+            'role' => User::ROLE_EMPLOYEE,
         ]);
     }
 
-    public function client(): static
+    public function inactive(): static
     {
         return $this->state(fn () => [
-            'role' => User::ROLE_CLIENT,
+            'is_active' => false,
         ]);
     }
 

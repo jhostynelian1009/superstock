@@ -10,9 +10,8 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    public const ROLE_ADMIN = 'admin';
-
-    public const ROLE_CLIENT = 'client';
+    public const ROLE_ADMIN = 'Administrador';
+    public const ROLE_EMPLOYEE = 'Empleado';
 
     /** @use HasFactory<UserFactory> */
     use HasFactory, Notifiable;
@@ -22,17 +21,10 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'document_number',
-        'phone',
         'email',
         'password',
         'role',
-        'is_primary_admin',
-        'default_delivery_type',
-        'address_neighborhood',
-        'address_main_street',
-        'address_secondary_street',
-        'address_reference',
+        'is_active',
     ];
 
     /**
@@ -51,13 +43,13 @@ class User extends Authenticatable
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
-            'is_primary_admin' => 'boolean',
+            'is_active' => 'boolean',
         ];
     }
 
-    public function orders(): HasMany
+    public function inventoryMovements(): HasMany
     {
-        return $this->hasMany(Order::class);
+        return $this->hasMany(InventoryMovement::class);
     }
 
     public function isAdmin(): bool
@@ -65,29 +57,8 @@ class User extends Authenticatable
         return $this->role === self::ROLE_ADMIN;
     }
 
-    public function isClient(): bool
+    public function isEmployee(): bool
     {
-        return $this->role === self::ROLE_CLIENT;
-    }
-
-    public function isPrimaryAdmin(): bool
-    {
-        return $this->isAdmin() && $this->is_primary_admin;
-    }
-
-    public function hasSavedDeliveryAddress(): bool
-    {
-        return $this->default_delivery_type === 'llevar'
-            && filled($this->address_neighborhood)
-            && filled($this->address_main_street)
-            && filled($this->address_secondary_street)
-            && filled($this->address_reference);
-    }
-
-    public function deliveryLabel(): string
-    {
-        return $this->default_delivery_type === 'llevar'
-            ? 'Para Llevar / Delivery'
-            : 'Consumo Local';
+        return $this->role === self::ROLE_EMPLOYEE;
     }
 }

@@ -54,6 +54,21 @@ Route::middleware(['auth', 'client'])->group(function () {
 
 Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::get('/proveedores', fn () => view('admin.placeholders.coming-soon', [
+        'title' => 'Proveedores',
+        'breadcrumb' => 'Proveedores',
+        'description' => 'Gestión de proveedores del inventario.',
+    ]))->name('admin.proveedores.index');
+    Route::get('/inventario', fn () => view('admin.placeholders.coming-soon', [
+        'title' => 'Inventario',
+        'breadcrumb' => 'Inventario',
+        'description' => 'Consulta de existencias y condiciones de abastecimiento.',
+    ]))->name('admin.inventario.index');
+    Route::get('/movimientos', fn () => view('admin.placeholders.coming-soon', [
+        'title' => 'Movimientos',
+        'breadcrumb' => 'Movimientos',
+        'description' => 'Historial de entradas y salidas de inventario.',
+    ]))->name('admin.movimientos.index');
     Route::get('/pedidos', [AdminOrderController::class, 'index'])->name('admin.pedidos.index');
     Route::get('/pedidos/{pedido}', [AdminOrderController::class, 'show'])->name('admin.pedidos.show');
     Route::get('/usuarios', [UserController::class, 'index'])->name('admin.usuarios.index');

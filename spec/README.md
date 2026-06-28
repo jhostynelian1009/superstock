@@ -1,27 +1,67 @@
-# SnackConnect Laravel - Carpeta de Especificaciones (spec/)
+# Especificaciones Oficiales de SuperStock
 
-Este directorio contiene las especificaciones formales del proyecto **SnackConnect Laravel**, adaptadas para un **proyecto académico universitario** con un equipo de **6 integrantes** y un plazo de **12 días**.
+`spec/` es la única fuente oficial de especificaciones funcionales, de datos, arquitectura, experiencia de usuario y planificación del proyecto **SuperStock**.
 
-Toda implementación en `app/` o runbook de automatización en `skill/` debe estar estrictamente alineada con las especificaciones aquí detalladas para garantizar el cumplimiento del 100% de la rúbrica de evaluación con el menor riesgo posible.
+SuperStock es un Sistema Web de Gestión de Inventario para Supermercados construido sobre Laravel, arquitectura MVC y MySQL. Su primera versión administra usuarios internos, categorías, productos, proveedores, existencias y movimientos de entrada y salida.
 
-## Estructura de Roles del Equipo
-*   **Líder Técnico (LT):** Configuración base, arquitectura general, integraciones y administración de Git/GitHub.
-*   **Desarrollador de Autenticación (DEV-AUTH):** Registro, login, control de acceso y seguridad de sesiones.
-*   **Desarrollador de Productos (DEV-PROD):** CRUD de productos, categorización y manejo de almacenamiento físico de imágenes.
-*   **Desarrollador de Frontend Público (DEV-FRONT):** Landing page, listado de catálogo, filtros y búsquedas dinámicas.
-*   **Desarrollador de Dashboard (DEV-DASH):** Panel interno privado, renderizado de métricas y layouts maestros.
-*   **Testing y Calidad (QA):** Implementación de pruebas automatizadas, auditorías de seguridad e integración continua local.
+## Gobierno documental
 
-## Estrategia Git y Pull Requests
-*   **Rama Principal (`main`):** Solo código estable y libre de errores.
-*   **Rama de Integración (`develop`):** Donde se fusionan las ramas de características aprobadas.
-*   **Ramas de Características (`feature/nombre-caracteristica`):** Creadas de forma individual por cada desarrollador según su rol.
-*   **Flujo de PR:** Toda Pull Request a `develop` requiere una revisión técnica del integrante de **Testing y Calidad (QA)** para verificar el cumplimiento de la rúbrica, y la posterior aprobación del **Líder Técnico** para el merge.
+- Toda implementación deberá trazarse hacia un requisito, caso de uso, regla de negocio o decisión arquitectónica contenida en esta carpeta.
+- Cuando exista contradicción con documentos históricos, prevalece `spec/`.
+- Los documentos de `docs/` se consideran insumos de análisis y dejan de ser normativos después de esta consolidación.
+- La incorporación de nuevas entidades, módulos, actores o cardinalidades requiere control de cambios y actualización coordinada de las especificaciones afectadas.
+- Los documentos de módulo no duplican reglas ni casos de uso: los referencian mediante sus códigos oficiales.
 
-## Índice de Documentos
-*   [Visión General](vision.md): Justificación académica, objetivos del proyecto y restricciones.
-*   [Requerimientos](requerimientos.md): Requerimientos funcionales y no funcionales vinculados a la rúbrica.
-*   [Arquitectura de Software](arquitectura.md): Patrón MVC Monolítico simplificado y enrutamiento.
-*   [Modelo de Base de Datos](base_datos.md): Entidades y relaciones sobre MySQL 8.x.
-*   [Roadmap del Proyecto](roadmap.md): Planificación detallada para el ciclo de 12 días.
-*   [Módulos Funcionales](modulos/README.md): Especificaciones detalladas por módulo de trabajo.
+## Alcance oficial
+
+### Actores
+
+- **Administrador:** gestiona usuarios, categorías, productos y proveedores; también consulta inventario, registra entradas y salidas, revisa movimientos y consulta el Dashboard.
+- **Empleado:** inicia y cierra sesión, consulta productos e inventario, busca productos, registra entradas y salidas y consulta el Dashboard. No administra usuarios ni configuración.
+
+### Módulos
+
+- Autenticación y sesión.
+- Usuarios.
+- Categorías.
+- Productos.
+- Proveedores.
+- Inventario y movimientos.
+- Entradas.
+- Salidas.
+- Dashboard.
+
+### Exclusiones
+
+No forman parte de SuperStock: catálogo público, carrito, checkout, clientes, pedidos, entregas, pagos, facturación, ventas por WhatsApp ni registro público de administradores.
+
+## Índice canónico
+
+| Documento | Responsabilidad |
+|---|---|
+| [Visión](vision.md) | Problema, propuesta de valor, actores, alcance y criterios de éxito. |
+| [Requerimientos](requerimientos.md) | Requisitos funcionales, no funcionales y reglas de negocio oficiales. |
+| [Casos de uso](casos_de_uso.md) | Interacciones entre actores y sistema, flujos y trazabilidad. |
+| [Arquitectura](arquitectura.md) | Estructura MVC, módulos, seguridad, flujo de datos y decisiones técnicas. |
+| [Base de datos](base_datos.md) | Modelo conceptual y lógico, MER, diccionario, relaciones e integridad. |
+| [Roadmap](roadmap.md) | Estrategia de adaptación, fases, riesgos y criterios de implementación. |
+| [Módulos](modulos/README.md) | Especificaciones funcionales por área del sistema. |
+| [Branding](design/branding.md) | Identidad, tono y aplicación de marca. |
+| [Design System](design/design-system.md) | Tokens, principios y reglas visuales. |
+| [Componentes UI](design/ui-components.md) | Patrones de interfaz reutilizables por módulo. |
+
+## Trazabilidad
+
+La trazabilidad oficial sigue esta cadena:
+
+**Visión → RF/RNF → CU → RN → Módulo → Pruebas**
+
+- `RF-xxx`: requisito funcional.
+- `RNF-xxx`: requisito no funcional.
+- `CU-xx`: caso de uso.
+- `RN-xxx`: regla de negocio.
+
+## Estado de la especificación
+
+Esta versión reemplaza la especificación heredada de SnackConnect. La implementación actual todavía puede contener componentes del dominio anterior; su eliminación y sustitución se rige por [roadmap.md](roadmap.md).
+

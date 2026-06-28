@@ -1,26 +1,72 @@
-# Especificación de Módulo: Autenticación (Auth)
+# Módulo de Autenticación y Sesión
 
-*   **Responsable del Módulo:** **DEV-AUTH**
-*   **Rama Git Relacionada:** `feature/02-auth`
-*   **Plazo de Entrega:** Día 3 y 4 del Roadmap.
+## 1. Propósito
 
----
+Controlar el acceso de Administradores y Empleados a las áreas internas de SuperStock y finalizar sus sesiones de forma segura.
 
-## 1. Alcance Académico
-El módulo provee los mecanismos de control de acceso requeridos por la rúbrica. El registro de administradores estará abierto en desarrollo, pero contará con validaciones estrictas y protección contra accesos no autorizados.
+## 2. Alcance
 
-## 2. Historias de Usuario Asignadas
-*   **HU-AUTH-01 (Registro):** Como usuario, quiero registrarme ingresando mi nombre, email y contraseña para poder administrar la tienda.
-*   **HU-AUTH-02 (Inicio de Sesión):** Como administrador, quiero loguearme con mis credenciales para acceder a la gestión de productos.
-*   **HU-AUTH-03 (Cierre de Sesión):** Como administrador autenticado, deseo cerrar sesión para proteger mi información.
+- Inicio de sesión con correo y contraseña.
+- Verificación de cuenta activa.
+- Creación y regeneración de sesión.
+- Redirección al Dashboard.
+- Cierre e invalidación de sesión.
+- Protección de rutas internas.
 
-## 3. Especificaciones Técnicas y Validaciones
-*   **Rutas a crear:**
-    *   `GET /login`, `POST /login`
-    *   `GET /register`, `POST /register`
-    *   `POST /logout`
-*   **Reglas de validación en PHP:**
-    *   `name`: `required|string|max:255`
-    *   `email`: `required|string|email|max:255|unique:users`
-    *   `password`: `required|string|min:8|confirmed`
-*   **Middleware:** Aplicar el middleware `auth` a las rutas de `/admin/*` para interceptar peticiones de invitados y redirigirlos a `/login`.
+No incluye registro público, selección manual de rol, perfiles de cliente ni solicitudes de administrador.
+
+## 3. Actores
+
+- Administrador.
+- Empleado.
+
+## 4. Trazabilidad
+
+| Tipo | Referencias |
+|---|---|
+| Requisitos | RF-001, RF-002, RF-013; RNF-001, RNF-002 |
+| Casos de uso | CU-01, CU-02 |
+| Reglas | RN-001, RN-002, RN-005, RN-006, RN-007, RN-008, RN-009 |
+
+## 5. Flujo funcional
+
+1. El usuario accede al formulario de login.
+2. Ingresa correo y contraseña.
+3. El sistema valida formato, credenciales y estado.
+4. El sistema regenera la sesión y determina el rol almacenado.
+5. El usuario accede al Dashboard con navegación autorizada.
+6. Al cerrar sesión, el sistema invalida sesión y token.
+
+## 6. Validaciones y seguridad
+
+- Correo obligatorio y válido.
+- Contraseña obligatoria.
+- Mensaje genérico ante credenciales incorrectas.
+- Cuenta activa obligatoria.
+- Limitación de intentos repetidos.
+- La autorización no depende solo de elementos ocultos en la interfaz.
+- Logout únicamente mediante una solicitud protegida contra CSRF.
+
+## 7. Respuestas esperadas
+
+- Éxito: sesión vigente y Dashboard.
+- Validación: formulario con mensajes y datos no sensibles conservados.
+- Credenciales o estado inválidos: acceso denegado sin crear sesión.
+- Acceso sin sesión: redirección al login.
+- Acceso sin rol: respuesta denegada o redirección segura.
+
+## 8. Dependencias
+
+- Entidad `users`.
+- Middleware de autenticación y autorización.
+- Layout de autenticación.
+- Módulo Usuarios para altas, roles y estados.
+
+## 9. Criterios de aceptación
+
+- Una cuenta activa con credenciales válidas inicia sesión.
+- Una cuenta inactiva o credencial inválida no inicia sesión.
+- Administrador y Empleado reciben únicamente permisos de su rol.
+- Cerrar sesión impide reutilizar la sesión anterior.
+- No existe ruta de registro público.
+

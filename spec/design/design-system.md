@@ -1,348 +1,207 @@
-# Design System Oficial — SnackConnect Laravel
+# Design System de SuperStock
 
-> **⚠ REGLA OBLIGATORIA:** Todo desarrollador debe leer este documento y `spec/design/ui-components.md` **antes de implementar cualquier interfaz**. Ningún componente visual puede crearse fuera de este sistema de diseño.
+## 1. Propósito
 
----
+Definir los tokens y reglas visuales que garantizan consistencia, accesibilidad y eficiencia en todas las interfaces internas. Los componentes concretos se describen en [ui-components.md](ui-components.md).
 
-## 0. Índice
+## 2. Principios
 
-1. [Identidad y Principios Visuales](#1-identidad-y-principios-visuales)
-2. [Paleta de Colores Oficial](#2-paleta-de-colores-oficial)
-3. [Tipografía Oficial](#3-tipografía-oficial)
-4. [Espaciado y Layout](#4-espaciado-y-layout)
-5. [Bordes y Radios](#5-bordes-y-radios)
-6. [Sombras](#6-sombras)
-7. [Iconografía](#7-iconografía)
-8. [Modo Oscuro](#8-modo-oscuro)
-9. [Visual Consistency Rules](#9-visual-consistency-rules)
-10. [Reglas de Aplicación por Módulo](#10-reglas-de-aplicación-por-módulo)
+| Principio | Regla |
+|---|---|
+| Claridad | La información operativa tiene prioridad sobre decoración. |
+| Consistencia | Una misma acción utiliza el mismo patrón en todos los módulos. |
+| Jerarquía | Cada pantalla posee una acción principal inequívoca. |
+| Prevención | Estados críticos se comunican antes de confirmar. |
+| Accesibilidad | Cumplimiento WCAG AA y operación por teclado. |
+| Responsive | Diseño desde 360 px y adaptación progresiva. |
+| Densidad controlada | Tablas y formularios muestran información suficiente sin saturación. |
 
----
+## 3. Colores
 
-## 1. Identidad y Principios Visuales
+### 3.1 Marca
 
-### 1.1 Concepto de Marca
+| Token | Claro | Oscuro | Uso |
+|---|---|---|---|
+| `brand-primary` | `#1D4ED8` | `#60A5FA` | Acción primaria, foco, navegación activa |
+| `brand-primary-hover` | `#1E40AF` | `#93C5FD` | Hover primario |
+| `brand-secondary` | `#0F766E` | `#2DD4BF` | Información de inventario y acción secundaria |
 
-SnackConnect es una plataforma de comercio local de snacks con checkout vía WhatsApp. Su identidad visual combina:
+### 3.2 Neutros
 
-- **Calidez y apetito:** Tonos cálidos (naranja, amarillo dorado, rosa rosado) que evocan alimentos y cercanía.
-- **Modernidad limpia:** Fondos casi-blancos o casi-negros, tipografía sans-serif precisa, geometría ordenada.
-- **Contraste intencional:** Acentos vibrantes sobre fondos neutros para jerarquía clara.
+| Token | Claro | Oscuro | Uso |
+|---|---|---|---|
+| `bg-base` | `#F8FAFC` | `#0F172A` | Fondo general |
+| `bg-surface` | `#FFFFFF` | `#1E293B` | Cards, tablas, modales |
+| `bg-muted` | `#F1F5F9` | `#334155` | Headers, filtros, estados vacíos |
+| `text-primary` | `#0F172A` | `#F8FAFC` | Texto principal |
+| `text-secondary` | `#475569` | `#CBD5E1` | Ayudas y metadatos |
+| `border-default` | `#CBD5E1` | `#475569` | Bordes y separadores |
 
-### 1.2 Principios de Diseño
+### 3.3 Semánticos
 
-| Principio | Descripción |
-|:---|:---|
-| **Coherencia** | Mismos colores, mismos botones, mismas tarjetas en todo el sistema. |
-| **Jerarquía Visual** | El acento principal siempre guía la acción más importante de cada pantalla. |
-| **Legibilidad** | Mínimo 4.5:1 de contraste texto/fondo (WCAG AA). |
-| **Consistencia de Radio** | Un solo sistema de radios; no se mezclan bordes redondeados con bordes rectos. |
-| **Mobile First** | Todo layout se define primero para `< 640px` y escala hacia pantallas más grandes. |
+| Token | Claro | Uso |
+|---|---|---|
+| `success` | `#15803D` | Operación correcta, stock disponible |
+| `warning` | `#D97706` | Stock bajo, atención necesaria |
+| `danger` | `#B91C1C` | Agotado, error, acción destructiva |
+| `info` | `#0369A1` | Información y ayuda |
 
----
+### Reglas
 
-## 2. Paleta de Colores Oficial
+- Texto normal mantiene contraste 4.5:1.
+- Stock disponible, bajo y agotado incluyen etiqueta o icono además de color.
+- Peligro no se usa como acento decorativo.
+- Una pantalla tiene una acción primaria; las demás son secundarias o de texto.
 
-### 2.1 Colores de Marca (Brand Colors)
+## 4. Tipografía
 
-Extraídos y normalizados de la referencia visual aprobada.
+**Familia:** Instrument Sans con fallback de sistema.
 
-| Token | Nombre | Hex | Uso Principal |
-|:---|:---|:---|:---|
-| `--color-brand-primary` | Naranja Acento | `#F53003` | CTA principal, botones primarios, estados activos |
-| `--color-brand-secondary` | Amarillo Dorado | `#F8B803` | Badges, highlights, etiquetas de precio |
-| `--color-brand-rose` | Rosa Snack | `#F0ACB8` | Decorativos, estados hover suaves, chips de categoría |
-| `--color-brand-rose-light` | Rosa Claro | `#F3BEC7` | Fondos de cards de categoría, banners suaves |
-| `--color-brand-dark-red` | Rojo Oscuro | `#1D0002` | Fondos oscuros de marca, hero en dark mode |
+| Nivel | Tamaño | Peso | Uso |
+|---|---:|---:|---|
+| Display | 36 px | 600 | Métrica destacada |
+| H1 | 30 px | 600 | Título de página |
+| H2 | 24 px | 600 | Sección |
+| H3 | 20 px | 600 | Card o panel |
+| Body | 16 px | 400 | Contenido principal |
+| Body small | 14 px | 400/500 | Tablas, formularios |
+| Caption | 12 px | 400/500 | Metadatos y badges |
 
-### 2.2 Colores Neutros (Neutral Scale)
+- Pesos permitidos: 400, 500 y 600.
+- Labels visibles; un placeholder no los reemplaza.
+- Cantidades usan dígitos tabulares cuando sea posible.
 
-| Token | Hex (Light) | Hex (Dark) | Uso |
-|:---|:---|:---|:---|
-| `--color-bg-base` | `#FDFDFC` | `#0a0a0a` | Fondo de página principal |
-| `--color-bg-surface` | `#FFFFFF` | `#161615` | Cards, modales, paneles |
-| `--color-bg-muted` | `#fff2f2` | `#1D0002` | Fondos secundarios, secciones hero decorativas |
-| `--color-bg-subtle` | `#dbdbd7` | `#3E3E3A` | Indicadores, separadores, puntos de progreso |
-| `--color-text-primary` | `#1b1b18` | `#EDEDEC` | Texto principal |
-| `--color-text-secondary` | `#706f6c` | `#A1A09A` | Texto secundario, placeholders, leyendas |
-| `--color-text-inverse` | `#FFFFFF` | `#1C1C1A` | Texto sobre fondos oscuros de marca |
-| `--color-border-default` | `#e3e3e0` | `#3E3E3A` | Bordes de inputs, cards, separadores |
-| `--color-border-strong` | `#19140035` | `#fffaed2d` | Bordes con sombra interna, contenedores activos |
+## 5. Espaciado
 
-### 2.3 Colores Semánticos (Semantic Colors)
-
-| Token | Hex | Uso |
-|:---|:---|:---|
-| `--color-success` | `#16a34a` | Mensajes de éxito, estados completados |
-| `--color-warning` | `#F8B803` | Advertencias (reusar brand-secondary) |
-| `--color-danger` | `#F53003` | Errores de validación, alertas destructivas |
-| `--color-info` | `#0284c7` | Información neutral, tooltips |
-
-### 2.4 Colores del Dark Mode (Modo Oscuro)
-
-| Token | Hex | Contexto |
-|:---|:---|:---|
-| `--dark-accent-primary` | `#FF4433` | Acento principal en dark mode |
-| `--dark-accent-orange` | `#FF750F` | Acento naranja oscuro, bordes decorativos SVG |
-| `--dark-accent-red` | `#F61500` | Variante saturada del rojo en dark |
-
----
-
-## 3. Tipografía Oficial
-
-### 3.1 Familia Tipográfica
-
-**Font Principal:** `Instrument Sans` (Google Fonts / Bunny Fonts)
-
-```
-font-family: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif,
-             'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-```
-
-**Importación CDN oficial del proyecto:**
-```html
-<link rel="preconnect" href="https://fonts.bunny.net">
-<link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet">
-```
-
-### 3.2 Escala Tipográfica
-
-| Nivel | Tamaño | Line Height | Peso | Uso |
-|:---|:---|:---|:---|:---|
-| `display` | `3rem` (48px) | `1.1` | `600` (SemiBold) | Hero title, nombre de marca |
-| `h1` | `1.875rem` (30px) | `1.2` | `600` | Títulos de página |
-| `h2` | `1.5rem` (24px) | `1.3` | `600` | Títulos de sección |
-| `h3` | `1.25rem` (20px) | `1.4` | `500` (Medium) | Subtítulos, nombres de card |
-| `h4` | `1.125rem` (18px) | `1.5` | `500` | Encabezados de panel |
-| `body-lg` | `1rem` (16px) | `1.5` | `400` (Regular) | Texto de párrafo estándar |
-| `body-sm` | `0.875rem` (14px) | `1.43` | `400` | Texto secundario, labels |
-| `caption` | `0.8125rem` (13px) | `20px` | `400` | Metadatos, timestamps, notas |
-| `micro` | `0.75rem` (12px) | `1.33` | `400` | Badges, chips pequeños |
-
-### 3.3 Reglas de Tipografía
-
-- **Solo se usa `Instrument Sans`** — nunca `Arial`, `Helvetica` genérico ni variantes sin importar.
-- **Pesos autorizados:** `400`, `500`, `600` — no usar `700` (bold) ni `300` (light).
-- **Letter-spacing:** `normal` por defecto. Solo `-0.025em` en headings display.
-- **No se permiten** fuentes adicionales sin aprobación del Líder Técnico.
-
----
-
-## 4. Espaciado y Layout
-
-### 4.1 Escala Base de Espaciado
-
-Base unit: `0.25rem` (4px). Todos los espaciados son múltiplos de esta unidad.
-
-| Token | Valor | px equiv. | Uso típico |
-|:---|:---|:---|:---|
-| `--space-1` | `0.25rem` | `4px` | Micro gaps, padding de badges |
-| `--space-2` | `0.5rem` | `8px` | Padding interno pequeño |
-| `--space-3` | `0.75rem` | `12px` | Gap entre elementos relacionados |
-| `--space-4` | `1rem` | `16px` | Padding estándar de componente |
-| `--space-5` | `1.25rem` | `20px` | Padding horizontal de botones |
-| `--space-6` | `1.5rem` | `24px` | Padding de cards, separación de secciones |
-| `--space-8` | `2rem` | `32px` | Padding de panels grandes |
-| `--space-12` | `3rem` | `48px` | Espaciado entre bloques de contenido |
-| `--space-20` | `5rem` | `80px` | Padding de secciones hero |
-
-### 4.2 Sistema de Grid
-
-| Breakpoint | Nombre | Ancho mínimo | Columnas | Gutter |
-|:---|:---|:---|:---|:---|
-| `default` | Mobile | `< 640px` | 4 cols | `16px` |
-| `sm` | Small | `≥ 640px` | 8 cols | `24px` |
-| `md` | Medium | `≥ 768px` | 12 cols | `24px` |
-| `lg` | Large | `≥ 1024px` | 12 cols | `32px` |
-| `xl` | XLarge | `≥ 1280px` | 12 cols | `32px` |
-
-### 4.3 Contenedores Máximos
-
-| Uso | Max-width |
-|:---|:---|
-| Contenido estrecho (auth, modales) | `335px` (mobile) / `448px` (desktop) |
-| Contenido general | `56rem` (896px) |
-| Layout principal con sidebar | `80rem` (1280px) |
-| Página de admin full-width | `100%` con padding horizontal de `32px` |
-
----
-
-## 5. Bordes y Radios
-
-### 5.1 Sistema de Border Radius
+Unidad base: 4 px.
 
 | Token | Valor | Uso |
-|:---|:---|:---|
-| `--radius-xs` | `0.125rem` (2px) | Micro elementos, separadores |
-| `--radius-sm` | `0.25rem` (4px) | **Botones estándar, inputs, badges** ← _radio por defecto del sistema_ |
-| `--radius-md` | `0.375rem` (6px) | Cards pequeñas, dropdowns |
-| `--radius-lg` | `0.5rem` (8px) | **Cards principales, modales, paneles** |
-| `--radius-xl` | `0.75rem` (12px) | Cards hero, featured sections |
-| `--radius-full` | `9999px` | Avatares, pills, chips redondos |
+|---|---:|---|
+| `space-1` | 4 px | Separación mínima |
+| `space-2` | 8 px | Icono y texto |
+| `space-3` | 12 px | Campos relacionados |
+| `space-4` | 16 px | Padding estándar |
+| `space-5` | 20 px | Botones y paneles compactos |
+| `space-6` | 24 px | Cards y formularios |
+| `space-8` | 32 px | Bloques principales |
+| `space-12` | 48 px | Secciones |
 
-> **Regla:** Botones → `--radius-sm`. Cards → `--radius-lg`. Avatares → `--radius-full`. No mezclar arbitrariamente.
+## 6. Layout responsive
 
-### 5.2 Bordes
+| Rango | Comportamiento |
+|---|---|
+| 360–639 px | Una columna; sidebar en drawer; tablas con scroll o vista apilada |
+| 640–767 px | Formularios simples en una o dos columnas según contenido |
+| 768–1023 px | Sidebar colapsable; grids de 2 columnas |
+| 1024 px o más | Sidebar fija; contenido de hasta 1440 px; grids de 4 métricas |
 
-- **Grosor estándar:** `1px` — nunca más de `2px` para bordes funcionales.
-- **Color default:** `var(--color-border-default)` = `#e3e3e0` (claro) / `#3E3E3A` (oscuro).
-- **Sombra interna de borde activo:** `inset 0px 0px 0px 1px rgba(26,26,0,0.16)` (claro) / `inset 0px 0px 0px 1px #fffaed2d` (oscuro).
+- Formularios críticos mantienen orden lógico al reflujo.
+- Las acciones primarias permanecen visibles sin cubrir contenido.
+- No se ocultan columnas críticas sin una alternativa de detalle.
 
----
+## 7. Bordes y radios
 
-## 6. Sombras
+| Token | Valor | Uso |
+|---|---:|---|
+| `radius-sm` | 4 px | Inputs, botones, badges |
+| `radius-md` | 6 px | Dropdowns y filtros |
+| `radius-lg` | 8 px | Cards, tablas, modales |
+| `radius-full` | 9999 px | Pills y avatares |
 
-### 6.1 Escala de Sombras
+- Borde estándar: 1 px.
+- Foco: anillo de 2 px con color primario y separación visible.
+- No mezclar radios arbitrariamente.
 
-| Token | Valor CSS | Uso |
-|:---|:---|:---|
-| `--shadow-micro` | `0 1px rgba(0,0,0,0.03)` | Indicadores de estado, bullets |
-| `--shadow-xs` | `0px 0px 1px rgba(0,0,0,0.03), 0px 1px 2px rgba(0,0,0,0.06)` | Micro-cards, avatares, badges |
-| `--shadow-sm` | `0 1px 3px rgba(0,0,0,0.10), 0 1px 2px -1px rgba(0,0,0,0.10)` | Inputs con foco, cards básicas |
-| `--shadow-md` | `0 4px 6px -1px rgba(0,0,0,0.10), 0 2px 4px -2px rgba(0,0,0,0.10)` | **Cards estándar, botones elevados** |
-| `--shadow-lg` | `0 10px 15px -3px rgba(0,0,0,0.10), 0 4px 6px -4px rgba(0,0,0,0.10)` | Dropdowns, sidebars, navbars |
-| `--shadow-xl` | `0 20px 25px -5px rgba(0,0,0,0.10), 0 8px 10px -6px rgba(0,0,0,0.10)` | Modales, popovers |
-| `--shadow-inset-border` | `inset 0px 0px 0px 1px rgba(26,26,0,0.16)` | Reemplazo de bordes en superficies blancas |
+## 8. Sombras
 
----
+| Nivel | Uso |
+|---|---|
+| Ninguna | Tablas y superficies contenidas |
+| Suave | Cards y header |
+| Media | Menús y elementos flotantes |
+| Alta | Modales |
 
-## 7. Iconografía
+Las sombras indican elevación, no decoración. En modo oscuro se reducen y se refuerzan bordes.
 
-### 7.1 Sistema de Iconos
+## 9. Iconografía
 
-- **Librería oficial:** [Heroicons](https://heroicons.com/) — SVG inline o componente Blade.
-- **Tamaños autorizados:**
-  - `xs`: `12px × 12px` — inline con texto micro
-  - `sm`: `16px × 16px` — botones, labels de input
-  - `md`: `20px × 20px` — **tamaño por defecto en la UI**
-  - `lg`: `24px × 24px` — iconos de navegación, sidebar
-  - `xl`: `32px × 32px` — iconos decorativos de sección
+- Librería: Heroicons outline.
+- Tamaño estándar: 20 px; navegación: 24 px; decorativo: 32 px.
+- Color heredado del texto.
+- Iconos de acción con tooltip o texto accesible.
+- No usar emojis como iconos funcionales.
 
-### 7.2 Reglas de Uso
+## 10. Estados de interacción
 
-- **Color:** siempre hereda `currentColor` del elemento padre — nunca hardcodear colores en SVG.
-- **Stroke:** `stroke-linecap: square` para iconos de flecha/link (como en la referencia). `round` para iconos de acción (eliminar, agregar).
-- **No usar** íconos de Font Awesome ni Bootstrap Icons — solo Heroicons.
-- Cada ícono debe tener un `aria-label` descriptivo cuando actúa como botón.
+Todos los controles contemplan:
 
----
+- Normal.
+- Hover.
+- Focus visible.
+- Active.
+- Disabled.
+- Loading.
+- Error cuando corresponda.
 
-## 8. Modo Oscuro
+Un botón en carga conserva ancho, impide doble envío y comunica progreso.
 
-### 8.1 Estrategia
+## 11. Modo oscuro
 
-El modo oscuro se activa mediante **`prefers-color-scheme: dark`** (sistema operativo) o mediante una clase CSS `dark` en el `<html>`.
+- Activación por preferencia del sistema o selección persistida.
+- Sin negro puro como fondo general.
+- Colores semánticos ajustados para contraste.
+- Imágenes y gráficos no deben perder legibilidad.
+- Toda pantalla debe verificarse en ambos modos antes de aprobarse.
 
-### 8.2 Reglas de Implementación
+## 12. Reglas por tipo de pantalla
 
-- Cada color del sistema tiene su par oscuro definido en la sección 2.
-- Los fondos en dark mode NO son negro puro (`#000`) — usar `#0a0a0a` o `#161615`.
-- Los acentos en dark mode son más saturados y ligeramente más cálidos: `#FF4433` en lugar de `#F53003`.
-- Las sombras en dark mode usan `rgba(255,250,237, 0.17)` en vez de `rgba(0,0,0,0.10)`.
-- Las sombras internas de borde usan `#fffaed2d` en lugar de `rgba(26,26,0,0.16)`.
+### Login
 
----
+- Contenedor estrecho, marca, formulario y ayuda mínima.
+- Sin registro público ni navegación administrativa.
 
-## 9. Visual Consistency Rules
+### Listados
 
-> Esta sección garantiza que **todos los módulos del sistema compartan exactamente los mismos patrones visuales**. Su incumplimiento es una violación del sistema de diseño.
+- Título, descripción, acción primaria, búsqueda/filtros, tabla, paginación y estado vacío.
+- Acciones según rol.
 
-### 9.1 Reglas de Color
+### Formularios
 
-| Regla | Descripción |
-|:---|:---|
-| **VC-COL-01** | El color de acento primario `#F53003` se usa **únicamente** para el botón CTA más importante por pantalla y para links de acción. |
-| **VC-COL-02** | El amarillo `#F8B803` se reserva para precios, badges de oferta y highlights de producto. Nunca para texto de párrafo. |
-| **VC-COL-03** | El rosa `#F0ACB8` solo aparece en elementos decorativos, chips de categoría y secciones hero. |
-| **VC-COL-04** | Fondo de página: siempre `#FDFDFC` (claro) / `#0a0a0a` (oscuro). **Prohibido** usar `#fff` puro como fondo de página. |
-| **VC-COL-05** | Superficies de cards y modales: `#FFFFFF` (claro) / `#161615` (oscuro). |
+- Grupos semánticos, labels, ayuda, validación próxima al campo y resumen de errores.
+- Cancelar como secundaria; guardar como primaria.
 
-### 9.2 Reglas de Tipografía
+### Movimientos
 
-| Regla | Descripción |
-|:---|:---|
-| **VC-TYP-01** | Solo se usa `Instrument Sans`. Sin excepciones. |
-| **VC-TYP-02** | Los títulos de página (`<h1>`) siempre usan peso `600` y tamaño `h1` de la escala. |
-| **VC-TYP-03** | El texto secundario usa siempre `--color-text-secondary` (`#706f6c`). |
-| **VC-TYP-04** | Los botones usan siempre el tamaño `body-sm` (14px) con peso `500`. |
+- Producto, stock actual, unidad y efecto de la operación visibles.
+- Resumen antes de confirmar.
+- Entradas usan información neutral/positiva; salidas insuficientes usan peligro.
 
-### 9.3 Reglas de Botones
+### Dashboard
 
-| Regla | Descripción |
-|:---|:---|
-| **VC-BTN-01** | Todos los botones primarios: fondo `#1b1b18`, texto `#FFFFFF`, radio `--radius-sm`. |
-| **VC-BTN-02** | Hover de botón primario: fondo `#000000`. Transición `150ms ease-in-out`. |
-| **VC-BTN-03** | Botones secundarios: borde `1px solid var(--color-border-default)`, fondo transparente. |
-| **VC-BTN-04** | Botones de acento (CTA principal): fondo `#F53003`, texto `#FFFFFF`. Solo 1 por pantalla. |
-| **VC-BTN-05** | Botón de WhatsApp: fondo `#25D366`, texto `#FFFFFF`. Ícono de WhatsApp SVG incluido. |
-| **VC-BTN-06** | Padding horizontal estándar: `20px`. Padding vertical: `6px`. |
+- Métricas con fuente real.
+- Máximo cuatro tarjetas primarias por fila.
+- Alertas accionables y tabla de movimientos recientes.
 
-### 9.4 Reglas de Cards
+## 13. Accesibilidad
 
-| Regla | Descripción |
-|:---|:---|
-| **VC-CRD-01** | Todas las cards usan `background: var(--color-bg-surface)` + `border-radius: var(--radius-lg)`. |
-| **VC-CRD-02** | Borde de card: `inset 0px 0px 0px 1px rgba(26,26,0,0.16)` como sombra interna (no border CSS). |
-| **VC-CRD-03** | Padding interno de card: `--space-6` (24px). |
-| **VC-CRD-04** | Cards de producto incluyen: imagen, nombre (`h3`), precio (`brand-secondary`), botón CTA. |
-| **VC-CRD-05** | Hover de card: elevación mediante `--shadow-md` con transición `200ms`. |
+- HTML semántico y orden de encabezados.
+- Navegación completa por teclado.
+- Foco nunca oculto.
+- Labels asociados a controles.
+- Errores anunciables y comprensibles.
+- Tablas con encabezados y caption contextual.
+- Modales con foco confinado y retorno al disparador.
+- Movimiento reducido cuando el sistema lo solicita.
 
-### 9.5 Reglas de Formularios
+## 14. Criterio de aprobación visual
 
-| Regla | Descripción |
-|:---|:---|
-| **VC-FRM-01** | Todos los inputs: borde `1px solid var(--color-border-default)`, radio `--radius-sm`. |
-| **VC-FRM-02** | Estado focus: `box-shadow: 0 0 0 2px rgba(245,48,3,0.20)` (anillo de acento). |
-| **VC-FRM-03** | Estado error: borde `#F53003`, mensaje de error en `caption` debajo del campo. |
-| **VC-FRM-04** | Labels: siempre visibles encima del input, nunca solo placeholder. Peso `500`, tamaño `body-sm`. |
-| **VC-FRM-05** | Padding de input: `12px 16px`. |
+Una interfaz se aprueba cuando:
 
-### 9.6 Reglas de Tablas
+- Usa únicamente tokens definidos.
+- Es responsive desde 360 px.
+- Funciona con teclado.
+- Mantiene contraste AA.
+- Muestra estados vacío, carga, éxito y error.
+- Respeta permisos del actor.
+- No contiene referencias visuales o textuales a SnackConnect.
 
-| Regla | Descripción |
-|:---|:---|
-| **VC-TBL-01** | Headers de tabla: fondo `--color-bg-muted`, texto `--color-text-secondary`, peso `500`. |
-| **VC-TBL-02** | Filas alternadas: una fila blanca, una fila `#FDFDFC`. No usar grises fuertes. |
-| **VC-TBL-03** | Acciones de fila (editar/eliminar): botones de texto con ícono, sin fondo. |
-| **VC-TBL-04** | Borde de tabla: `1px solid var(--color-border-default)` solo en separadores horizontales. |
-
----
-
-## 10. Reglas de Aplicación por Módulo
-
-Cada módulo debe cumplir las reglas base del sistema más sus reglas específicas:
-
-### Landing Page
-- Fondo de hero: `--color-bg-muted` (`#fff2f2`) con elementos decorativos en `--color-brand-rose`.
-- Navbar: fondo `--color-bg-base`, borde inferior `1px solid --color-border-default`.
-- CTA principal: botón de acento `#F53003` con texto de acción claro.
-- Precios/destacados: usar `--color-brand-secondary` (`#F8B803`).
-
-### Login / Registro
-- Layout dividido: panel de formulario (izquierda/abajo en mobile) sobre fondo `--color-bg-surface`. Panel decorativo (derecha/arriba en mobile) con `--color-bg-muted`.
-- Sin sidebars ni navbars complejas. Solo logo + formulario + link de acción secundaria.
-
-### Dashboard Admin
-- Sidebar fija izquierda: fondo `--color-bg-surface`, borde derecho `--color-border-default`.
-- Área de contenido: fondo `--color-bg-base`.
-- Metric cards: fondo `--color-bg-surface` con `--shadow-md` y acento de color semántico.
-
-### Catálogo Público
-- Grid de productos: 1 col (mobile), 2 cols (sm), 3 cols (lg), 4 cols (xl).
-- Filtros de categoría: chips con radio `--radius-full`, usando `--color-brand-rose` activo.
-- Cards de producto: imagen cuadrada (aspect-ratio 1:1) en la parte superior.
-
-### CRUD de Productos (Admin)
-- Tabla de listado: seguir todas las reglas `VC-TBL-*`.
-- Formulario de creación/edición: en página completa o modal. Seguir todas las reglas `VC-FRM-*`.
-- Botón de eliminar: variante `danger` (`color: --color-danger`), requiere confirmación modal.
-
-### WhatsApp Checkout
-- Botón de checkout: `--color-brand-whatsapp` (`#25D366`), ancho completo en mobile.
-- Resumen del carrito: card con fondo `--color-bg-surface`, lista de ítems, total en `h2` con `--color-brand-secondary`.
-- Estado vacío: ilustración simple + texto en `--color-text-secondary`.
-
----
-
-*Última actualización del Design System: Fase 1 — Cimientos Visuales.*
-*Aprobado por: Arquitecto de Software / Líder Técnico.*

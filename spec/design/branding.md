@@ -1,190 +1,147 @@
-# Branding Oficial — SnackConnect Laravel
+# Branding Oficial de SuperStock
 
----
+## 1. Identidad
 
-## 1. Nombre de Marca
+| Propiedad | Definición |
+|---|---|
+| Nombre | **SuperStock** |
+| Escritura | PascalCase, una palabra |
+| Categoría | Sistema interno de gestión de inventario |
+| Tagline | **Control claro. Inventario confiable.** |
+| Idioma | Español de Ecuador |
 
-| Propiedad | Valor |
-|:---|:---|
-| **Nombre completo** | SnackConnect |
-| **Formato tipográfico** | PascalCase, una sola palabra: **Snack** + **Connect** |
-| **Uso incorrecto** | ~~Snack Connect~~, ~~snackconnect~~, ~~SNACKCONNECT~~, ~~Snack-Connect~~ |
-| **Tagline** | _"Tus snacks favoritos, directo a tu WhatsApp."_ |
+No se utilizarán nombres, textos ni recursos visuales de SnackConnect en la interfaz final.
 
----
+## 2. Concepto de marca
 
-## 2. Logo
+SuperStock comunica:
 
-### 2.1 Logotipo Textual (Primary)
+- **Control:** información ordenada y estados inequívocos.
+- **Confianza:** saldos respaldados por movimientos.
+- **Precisión:** cantidades, fechas y responsables visibles.
+- **Eficiencia:** acciones operativas rápidas y sin decoración innecesaria.
+- **Prevención:** alertas comprensibles antes de que ocurra un faltante.
 
-El logo principal de SnackConnect es un **logotipo textual** (wordmark) que utiliza la tipografía del sistema.
+La identidad es sobria y operativa. No utiliza fotografía de alimentos, lenguaje de ventas ni recursos propios de comercio electrónico.
 
-| Propiedad | Valor |
-|:---|:---|
-| **Tipografía** | `Instrument Sans` |
-| **Peso** | `600` (SemiBold) |
-| **Tamaño mínimo** | `20px` en pantalla |
-| **Color sobre fondo claro** | `--color-text-primary` (`#1b1b18`) |
-| **Color sobre fondo oscuro** | `--color-text-primary` dark (`#EDEDEC`) |
-| **Color sobre fondo de marca** | `#FFFFFF` |
+## 3. Logotipo
 
-### 2.2 Icono de Marca (Favicon / Avatar)
+### 3.1 Wordmark
 
-| Propiedad | Valor |
-|:---|:---|
-| **Forma** | Cuadrado con `border-radius: var(--radius-lg)` |
-| **Fondo** | `--color-brand-primary` (`#F53003`) |
-| **Contenido** | Letra **S** en `Instrument Sans`, peso `600`, color `#FFFFFF` |
-| **Tamaño mínimo** | `32px × 32px` |
-| **Favicon** | Versión a `16px` y `32px` como `.ico` |
+- Texto: **SuperStock**.
+- Tipografía: Instrument Sans, peso 600.
+- Color claro: azul primario.
+- Color oscuro: blanco o neutral claro.
+- Tamaño mínimo digital: 20 px de altura.
 
-### 2.3 Espacio de Protección
+### 3.2 Isotipo
 
-El logo debe mantener un espacio mínimo libre a su alrededor equivalente a la **altura de la letra "S"** del logotipo en todos sus lados. Ningún elemento puede invadir esta zona.
+- Forma: cuadrado con radio medio.
+- Símbolo: monograma **SS** o representación geométrica de cajas apiladas.
+- Fondo: azul primario.
+- Contenido: blanco.
+- Uso: favicon, avatar del sistema y modo colapsado de la navegación.
 
-### 2.4 Usos Incorrectos del Logo
+El símbolo definitivo deberá aprobarse antes de producir archivos de marca; no se utilizarán emojis como logotipo.
 
-- ❌ No estirar ni distorsionar las proporciones.
-- ❌ No cambiar la tipografía.
-- ❌ No usar sombras o efectos de bisel.
-- ❌ No colocar sobre fondos que reduzcan el contraste por debajo de 4.5:1.
-- ❌ No rotar ni inclinar.
-- ❌ No agregar íconos emoji como logo.
+### 3.3 Protección y usos incorrectos
 
----
+- Mantener alrededor del logo un espacio equivalente a la altura de la letra S.
+- No deformar, rotar, aplicar sombras decorativas ni alterar proporciones.
+- No cambiar colores fuera de las variantes aprobadas.
+- No ubicar sobre fondos sin contraste WCAG AA.
+- No añadir referencias a snacks, carritos o WhatsApp.
 
-## 3. Paleta de Marca (Resumen Visual)
+## 4. Paleta resumida
 
-### 3.1 Colores Primarios
+La definición completa reside en [design-system.md](design-system.md).
 
-```
-┌───────────────┐  ┌───────────────┐  ┌───────────────┐
-│               │  │               │  │               │
-│   #F53003     │  │   #F8B803     │  │   #F0ACB8     │
-│   Naranja     │  │   Dorado      │  │   Rosa        │
-│   Acento      │  │   Precio      │  │   Decorativo  │
-│               │  │               │  │               │
-└───────────────┘  └───────────────┘  └───────────────┘
-```
+| Rol | Color | Uso |
+|---|---|---|
+| Primario | `#1D4ED8` | Navegación activa, foco y acción principal |
+| Secundario | `#0F766E` | Inventario disponible y acciones complementarias |
+| Advertencia | `#D97706` | Stock bajo y atención |
+| Peligro | `#B91C1C` | Agotado, errores y acciones destructivas |
+| Fondo | `#F8FAFC` | Superficie general |
+| Texto | `#0F172A` | Contenido principal |
 
-### 3.2 Neutros de Marca
+Los colores de stock son semánticos y nunca deben depender únicamente del color; siempre incluyen texto o icono.
 
-```
-┌───────────────┐  ┌───────────────┐  ┌───────────────┐  ┌───────────────┐
-│               │  │               │  │               │  │               │
-│   #1b1b18     │  │   #706f6c     │  │   #FDFDFC     │  │   #fff2f2     │
-│   Texto       │  │   Texto       │  │   Fondo       │  │   Fondo       │
-│   Principal   │  │   Secundario  │  │   Base        │  │   Muted       │
-│               │  │               │  │               │  │               │
-└───────────────┘  └───────────────┘  └───────────────┘  └───────────────┘
-```
+## 5. Tono de voz
 
-> Referencia completa de tokens en [design-system.md](design-system.md#2-paleta-de-colores-oficial).
+| Atributo | Aplicación |
+|---|---|
+| Directo | Indica la acción y el resultado sin lenguaje promocional. |
+| Preciso | Usa nombres de producto, cantidades y fechas concretas. |
+| Preventivo | Explica cómo corregir un error o evitar un faltante. |
+| Profesional | Mantiene vocabulario interno de inventario. |
+| Neutral | No celebra ni dramatiza operaciones rutinarias. |
 
----
+### Ejemplos
 
-## 4. Tono de Voz
+| Contexto | Texto recomendado |
+|---|---|
+| Acción | “Registrar entrada” |
+| Confirmación | “La entrada fue registrada. Stock actual: 125 unidades.” |
+| Validación | “La cantidad debe ser mayor que cero.” |
+| Stock insuficiente | “Disponible: 8. La salida solicitada es 10.” |
+| Estado vacío | “No hay movimientos para los filtros seleccionados.” |
+| Desactivación | “El producto dejará de estar disponible para nuevos movimientos.” |
 
-### 4.1 Personalidad de Marca
+## 6. Terminología oficial
 
-| Atributo | Descripción |
-|:---|:---|
-| **Cercano** | Hablamos como un vecino amigable, no como una corporación. |
-| **Directo** | Instrucciones claras, sin rodeos. Las acciones se entienden al primer vistazo. |
-| **Cálido** | Los colores y el lenguaje evocan comida, sabor y comunidad local. |
-| **Confiable** | Sin trucos ni letra pequeña. Precios claros, acciones predecibles. |
+| Usar | No usar |
+|---|---|
+| Producto | Snack, artículo de carrito |
+| Inventario o existencia | Catálogo público |
+| Entrada | Compra del cliente |
+| Salida | Pedido |
+| Movimiento | Transacción de venta |
+| Proveedor | Vendedor de marketplace |
+| Administrador / Empleado | Cliente / Administrador principal |
+| Registrar | Comprar / Agregar al carrito |
 
-### 4.2 Reglas de Copywriting
+## 7. Aplicación por contexto
 
-| Contexto | Tono | Ejemplo |
-|:---|:---|:---|
-| **Botón CTA** | Imperativo, acción clara | "Agregar al Carrito", "Confirmar Pedido" |
-| **Títulos** | Declarativo, corto | "Nuestros Snacks", "Tu Pedido" |
-| **Mensajes de éxito** | Positivo, celebratorio | "¡Producto agregado! 🎉" |
-| **Mensajes de error** | Empático, solucionador | "No pudimos guardar. Revisa los campos marcados." |
-| **Estado vacío** | Invitador, no triste | "Aún no hay productos. ¡Agrega el primero!" |
-| **Placeholder** | Guía concreta | "Ej: Muffin de Chocolate" |
+### Login
 
-### 4.3 Idioma
+- Wordmark visible.
+- Mensaje: “Acceso interno a SuperStock”.
+- Sin enlaces de registro público.
+- Decoración mínima relacionada con orden y control.
 
-- **Interfaz del sistema:** Español (es-EC).
-- **Mensajes del sistema Laravel (auth, validation):** Español.
-- **Variables de código:** Inglés (convención Laravel).
+### Layout interno
 
----
+- Isotipo y nombre en sidebar.
+- Contexto actual mediante título y breadcrumb.
+- Nombre y rol del usuario en cabecera.
+- Cierre de sesión claramente disponible.
 
-## 5. Fotografía y Estilo de Imágenes
+### Dashboard
 
-### 5.1 Estilo Fotográfico de Productos
+- Prioridad a métricas y alertas.
+- Verde/teal para disponibilidad, ámbar para bajo y rojo para agotado.
+- Sin métricas monetarias, promociones ni ilustraciones comerciales.
 
-| Propiedad | Directriz |
-|:---|:---|
-| **Iluminación** | Natural o difusa, sin sombras duras. |
-| **Fondo** | Neutro (blanco, crema) o ambiental (mesa de madera, mantel). |
-| **Encuadre** | Cenital (top-down) o 3/4 para snacks. Nunca tomas laterales planas. |
-| **Resolución** | Mínimo `800×800px`, formato cuadrado (1:1). |
-| **Formato** | JPEG o WEBP. Máximo 2MB por archivo (RN-02). |
-| **Tratamiento** | Sin filtros extremos. Saturación natural. Contraste medio. |
+### Formularios operativos
 
-### 5.2 Placeholder de Imagen
+- Producto y existencia actual siempre visibles.
+- Cantidad y efecto del movimiento destacados.
+- Lenguaje de confirmación explícito.
 
-Cuando un producto no tiene imagen:
+## 8. Accesibilidad de marca
 
-| Propiedad | Valor |
-|:---|:---|
-| **Fondo** | `--color-bg-muted` (`#fff2f2`) |
-| **Ícono** | Heroicon `photo` (xl), color `--color-border-default` |
-| **Texto** | "Sin imagen", `caption`, `--color-text-secondary` |
+- Contraste mínimo 4.5:1 para texto normal.
+- No usar color como único indicador.
+- Tipografía mínima de 14 px en contenido operativo.
+- Estados de foco visibles.
+- Iconos funcionales con nombre accesible.
+- Animaciones breves y respetuosas de preferencias de movimiento reducido.
 
----
+## 9. Referencias
 
-## 6. Aplicación de Marca por Contexto
+- [Design System](design-system.md)
+- [Componentes UI](ui-components.md)
+- [Visión](../vision.md)
+- [Arquitectura](../arquitectura.md)
 
-### 6.1 Encabezado de Páginas Públicas
-
-```
-[Logo SnackConnect]                    [Catálogo]  [Login]  [Registrarse]
-```
-- Logo alineado a la izquierda.
-- Navegación alineada a la derecha.
-- Fondo `--color-bg-base`.
-
-### 6.2 Encabezado del Panel Admin
-
-```
-[Logo S]  SnackConnect Admin           [🔔]  [Admin ▾]
-```
-- Ícono compacto + texto en la sidebar.
-- Navbar superior con notificaciones y menú de usuario.
-
-### 6.3 Footer Público
-
-```
-─────────────────────────────────────────────
-SnackConnect © 2026 — Todos los derechos reservados.
-Hecho con 🍕 para la comunidad local.
-```
-- Texto centrado, `caption`, `--color-text-secondary`.
-- Fondo `--color-bg-surface`, borde superior `--color-border-default`.
-
-### 6.4 Página de Login / Registro
-
-- Logo centrado en la parte superior del formulario.
-- Sin navbar completa — solo el logo como elemento de marca.
-- Fondo dividido: formulario sobre `--color-bg-surface`, panel decorativo sobre `--color-bg-muted`.
-
----
-
-## 7. Materiales de Referencia
-
-| Recurso | Ubicación |
-|:---|:---|
-| Design System completo | [spec/design/design-system.md](design-system.md) |
-| Catálogo de componentes | [spec/design/ui-components.md](ui-components.md) |
-| Arquitectura del sistema | [spec/arquitectura.md](../arquitectura.md) |
-| Especificaciones de módulos | [spec/modulos/](../modulos/README.md) |
-
----
-
-*Última actualización: Fase 1 — Identidad de Marca.*
-*Aprobado por: Arquitecto de Software / Líder Técnico.*

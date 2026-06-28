@@ -1,22 +1,96 @@
-# Visión del Proyecto - SnackConnect Laravel (Ámbito Académico)
+# Visión de SuperStock
 
-## 1. Introducción y Contexto Académico
-Este proyecto se desarrolla en el marco de una evaluación académica universitaria. El equipo está compuesto por **6 integrantes** con roles distribuidos y cuenta con un plazo estricto de **12 días** para la entrega final. 
+## 1. Propósito
 
-El principal objetivo del proyecto no es construir un sistema comercial a gran escala, sino implementar un **Mínimo Producto Viable (MVP)** que cumpla con el 100% de los lineamientos de la rúbrica de evaluación con un margen de riesgo técnico mínimo.
+SuperStock es un Sistema Web de Gestión de Inventario para Supermercados. Su propósito es proporcionar al personal autorizado una fuente confiable para administrar productos, consultar existencias y registrar toda variación de stock mediante entradas y salidas trazables.
 
-## 2. Propuesta de Valor Abreviada
-**SnackConnect** permite a pequeños comercios locales de snacks y alimentos digitalizar su carta y recibir pedidos directos a través de WhatsApp sin intermediarios ni pasarelas de pago externas complejas, las cuales representarían un riesgo de integración inaceptable dentro del límite de 12 días.
+El sistema reutiliza la infraestructura Laravel de SnackConnect, pero reemplaza su dominio de catálogo público y pedidos por un dominio estrictamente interno de inventario.
 
-## 3. Limitaciones y Alcance del Proyecto Académico
-*   **Base de Datos Estándar:** Uso de MySQL 8.x para garantizar compatibilidad con XAMPP, phpMyAdmin y entornos reales de producción, facilitando la exposición académica.
-*   **Checkout sin Pasarela de Pago:** Redirección limpia a WhatsApp que encapsula el pedido en un string URL, eliminando la necesidad de APIs de pago (Stripe, PayPal) que requieran credenciales o cuentas activas.
-*   **Despliegue Local Rápido:** Configuración ágil a través del servidor local de Laravel Vite y Artisan.
+## 2. Problema
 
-## 4. Distribución General de Responsabilidades
-1.  **Líder Técnico (LT):** Coordina e integra.
-2.  **Autenticación (DEV-AUTH):** Asegura el acceso seguro del administrador.
-3.  **Productos (DEV-PROD):** Implementa el catálogo interno (CRUD).
-4.  **Frontend Público (DEV-FRONT):** Construye la cara visible del sitio (Landing y catálogo).
-5.  **Dashboard (DEV-DASH):** Diseña el panel administrativo de visualización rápida.
-6.  **Testing y Calidad (QA):** Verifica que todo código cumpla la rúbrica antes de integrarlo.
+El control manual o disperso del inventario dificulta conocer las existencias reales, identificar productos agotados, establecer responsabilidades sobre los movimientos y explicar diferencias entre el stock físico y el registrado.
+
+Sin un historial consistente, el supermercado no puede determinar con precisión quién modificó una existencia, cuándo ocurrió la operación ni cuál fue su motivo.
+
+## 3. Propuesta de valor
+
+SuperStock centraliza:
+
+- El catálogo maestro de productos y categorías.
+- Los usuarios internos y sus permisos.
+- Los proveedores utilizados como referencia de abastecimiento.
+- La existencia vigente y el stock mínimo por producto.
+- El historial inmutable de entradas y salidas.
+- Los indicadores operativos de stock bajo, agotados y actividad reciente.
+
+La propuesta prioriza simplicidad, trazabilidad e integridad antes que amplitud funcional.
+
+## 4. Actores
+
+### Administrador
+
+Responsable de la configuración funcional y del control general del sistema. Puede gestionar usuarios, categorías, productos y proveedores; consultar inventario; registrar movimientos y revisar el Dashboard.
+
+### Empleado
+
+Responsable de la operación cotidiana. Puede autenticarse, consultar productos e inventario, buscar productos, registrar entradas y salidas y consultar el Dashboard. No administra usuarios, permisos ni configuración.
+
+## 5. Alcance de la primera versión
+
+La primera versión incluye:
+
+1. Autenticación y cierre seguro de sesión.
+2. Gestión de usuarios internos por el Administrador.
+3. Gestión de categorías.
+4. Gestión y búsqueda de productos.
+5. Gestión básica de proveedores.
+6. Consulta de existencias y stock mínimo.
+7. Registro de entradas.
+8. Registro de salidas con validación de disponibilidad.
+9. Historial de movimientos.
+10. Dashboard con información real.
+
+La primera versión administra un único inventario consolidado por producto. Sucursales y bodegas múltiples quedan como extensión futura.
+
+## 6. Fuera de alcance
+
+- Clientes y perfiles de comprador.
+- Landing o catálogo público.
+- Carrito y checkout.
+- Pedidos, entregas, ventas y facturación.
+- Pasarelas de pago o integración con WhatsApp.
+- Compras y órdenes de compra.
+- Inventario por múltiples ubicaciones en esta versión.
+
+## 7. Principios del producto
+
+- **Trazabilidad:** toda variación de stock tiene movimiento, usuario, fecha y motivo.
+- **Integridad:** ninguna salida produce stock negativo.
+- **Separación de responsabilidades:** producto, saldo y movimiento son conceptos distintos.
+- **Mínimo privilegio:** cada actor accede únicamente a las funciones autorizadas.
+- **Datos reales:** el Dashboard no presenta valores simulados.
+- **Conservación histórica:** usuarios, productos, proveedores y movimientos con historial no se eliminan de forma destructiva.
+- **Responsive:** la interfaz es operable en escritorio, tableta y móvil.
+
+## 8. Criterios de éxito
+
+SuperStock se considerará funcionalmente aceptable cuando:
+
+- Los dos actores puedan autenticarse y acceder solo a sus funciones.
+- El Administrador pueda mantener los datos maestros aprobados.
+- Las existencias solo cambien mediante entradas o salidas confirmadas.
+- Cada movimiento sea consultable y trazable.
+- El sistema rechace cantidades inválidas y salidas sin disponibilidad.
+- El inventario y el historial puedan conciliarse.
+- El Dashboard refleje los datos reales del sistema.
+- Las pruebas cubran permisos, integridad de stock y flujos críticos.
+
+## 9. Restricciones y supuestos
+
+- Framework objetivo: Laravel 12.x sobre PHP 8.2 o superior.
+- Persistencia objetivo: MySQL; la versión deberá ser uniforme entre desarrollo, pruebas y presentación.
+- Arquitectura: monolito modular basado en MVC.
+- Interfaz: Blade, Tailwind CSS, JavaScript y Vite.
+- Idioma de interfaz: español de Ecuador.
+- La adaptación se realiza sobre SnackConnect y debe preservar únicamente infraestructura compatible con este alcance.
+

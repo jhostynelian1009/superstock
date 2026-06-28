@@ -11,9 +11,32 @@
     @include('admin.partials.flash')
 
     <div class="max-w-3xl rounded-lg bg-white p-6 shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:bg-[#161615] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d]">
-        <form action="{{ route('admin.productos.update', $product) }}" method="POST" enctype="multipart/form-data" class="space-y-5">
+        <form action="{{ route('admin.productos.update', $product) }}" method="POST" class="space-y-5">
             @csrf
             @method('PUT')
+
+            <div class="grid gap-5 sm:grid-cols-2">
+                <div>
+                    <label for="sku" class="mb-2 block text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC]">
+                        SKU <span class="text-[#F53003]">*</span>
+                    </label>
+                    <input type="text" name="sku" id="sku" value="{{ old('sku', $product->sku) }}" required
+                        class="w-full rounded-sm border border-[#e3e3e0] bg-white px-4 py-3 text-sm focus:border-[#F53003] focus:outline-none focus:ring-2 focus:ring-[rgba(245,48,3,0.20)] dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC] @error('sku') border-[#F53003] @enderror">
+                    @error('sku')
+                        <p class="mt-1 text-[13px] text-[#F53003]">{{ $message }}</p>
+                    @enderror
+                </div>
+                <div>
+                    <label for="barcode" class="mb-2 block text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC]">
+                        Código de barras
+                    </label>
+                    <input type="text" name="barcode" id="barcode" value="{{ old('barcode', $product->barcode) }}"
+                        class="w-full rounded-sm border border-[#e3e3e0] bg-white px-4 py-3 text-sm focus:border-[#F53003] focus:outline-none focus:ring-2 focus:ring-[rgba(245,48,3,0.20)] dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC] @error('barcode') border-[#F53003] @enderror">
+                    @error('barcode')
+                        <p class="mt-1 text-[13px] text-[#F53003]">{{ $message }}</p>
+                    @enderror
+                </div>
+            </div>
 
             <div>
                 <label for="name" class="mb-2 block text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC]">
@@ -26,42 +49,31 @@
                 @enderror
             </div>
 
-            <div>
-                <label for="category_id" class="mb-2 block text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC]">
-                    Categoría <span class="text-[#F53003]">*</span>
-                </label>
-                <select name="category_id" id="category_id" required
-                    class="w-full rounded-sm border border-[#e3e3e0] bg-white px-4 py-3 text-sm focus:border-[#F53003] focus:outline-none focus:ring-2 focus:ring-[rgba(245,48,3,0.20)] dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC] @error('category_id') border-[#F53003] @enderror">
-                    <option value="">Selecciona una categoría</option>
-                    @foreach ($categories as $category)
-                        <option value="{{ $category->id }}" @selected(old('category_id', $product->category_id) == $category->id)>
-                            {{ $category->name }}
-                        </option>
-                    @endforeach
-                </select>
-                @error('category_id')
-                    <p class="mt-1 text-[13px] text-[#F53003]">{{ $message }}</p>
-                @enderror
-            </div>
-
             <div class="grid gap-5 sm:grid-cols-2">
                 <div>
-                    <label for="price" class="mb-2 block text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC]">
-                        Precio <span class="text-[#F53003]">*</span>
+                    <label for="category_id" class="mb-2 block text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC]">
+                        Categoría <span class="text-[#F53003]">*</span>
                     </label>
-                    <input type="number" name="price" id="price" value="{{ old('price', $product->price) }}" step="0.01" min="0.01" required
-                        class="w-full rounded-sm border border-[#e3e3e0] bg-white px-4 py-3 text-sm focus:border-[#F53003] focus:outline-none focus:ring-2 focus:ring-[rgba(245,48,3,0.20)] dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC] @error('price') border-[#F53003] @enderror">
-                    @error('price')
+                    <select name="category_id" id="category_id" required
+                        class="w-full rounded-sm border border-[#e3e3e0] bg-white px-4 py-3 text-sm focus:border-[#F53003] focus:outline-none focus:ring-2 focus:ring-[rgba(245,48,3,0.20)] dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC] @error('category_id') border-[#F53003] @enderror">
+                        <option value="">Selecciona una categoría</option>
+                        @foreach ($categories as $category)
+                            <option value="{{ $category->id }}" @selected(old('category_id', $product->category_id) == $category->id)>
+                                {{ $category->name }}
+                            </option>
+                        @endforeach
+                    </select>
+                    @error('category_id')
                         <p class="mt-1 text-[13px] text-[#F53003]">{{ $message }}</p>
                     @enderror
                 </div>
                 <div>
-                    <label for="stock" class="mb-2 block text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC]">
-                        Stock <span class="text-[#F53003]">*</span>
+                    <label for="unit_of_measure" class="mb-2 block text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC]">
+                        Unidad de medida <span class="text-[#F53003]">*</span>
                     </label>
-                    <input type="number" name="stock" id="stock" value="{{ old('stock', $product->stock) }}" min="0" required
-                        class="w-full rounded-sm border border-[#e3e3e0] bg-white px-4 py-3 text-sm focus:border-[#F53003] focus:outline-none focus:ring-2 focus:ring-[rgba(245,48,3,0.20)] dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC] @error('stock') border-[#F53003] @enderror">
-                    @error('stock')
+                    <input type="text" name="unit_of_measure" id="unit_of_measure" value="{{ old('unit_of_measure', $product->unit_of_measure) }}" required placeholder="Unidades, Kilogramos, etc."
+                        class="w-full rounded-sm border border-[#e3e3e0] bg-white px-4 py-3 text-sm focus:border-[#F53003] focus:outline-none focus:ring-2 focus:ring-[rgba(245,48,3,0.20)] dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC] @error('unit_of_measure') border-[#F53003] @enderror">
+                    @error('unit_of_measure')
                         <p class="mt-1 text-[13px] text-[#F53003]">{{ $message }}</p>
                     @enderror
                 </div>
@@ -71,24 +83,6 @@
                 <label for="description" class="mb-2 block text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC]">Descripción</label>
                 <textarea name="description" id="description" rows="4"
                     class="min-h-[120px] w-full resize-y rounded-sm border border-[#e3e3e0] bg-white px-4 py-3 text-sm focus:border-[#F53003] focus:outline-none focus:ring-2 focus:ring-[rgba(245,48,3,0.20)] dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC]">{{ old('description', $product->description) }}</textarea>
-            </div>
-
-            @if ($product->image)
-                <div>
-                    <p class="mb-2 text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC]">Imagen actual</p>
-                    <img src="{{ asset('storage/'.$product->image) }}" alt="{{ $product->name }}"
-                        class="h-24 w-24 rounded-sm object-cover">
-                </div>
-            @endif
-
-            <div>
-                <label for="image" class="mb-2 block text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC]">Nueva imagen</label>
-                <input type="file" name="image" id="image" accept="image/jpeg,image/png,image/webp"
-                    class="w-full rounded-sm border border-dashed border-[#e3e3e0] bg-[#fff2f2] px-4 py-6 text-sm file:mr-4 file:rounded-sm file:border-0 file:bg-[#1b1b18] file:px-4 file:py-2 file:text-sm file:font-medium file:text-white dark:border-[#3E3E3A] dark:bg-[#1D0002] dark:file:bg-[#EDEDEC] dark:file:text-[#1C1C1A] @error('image') border-[#F53003] @enderror">
-                <p class="mt-1 text-[13px] text-[#706f6c] dark:text-[#A1A09A]">JPEG, PNG o WEBP — máx. 2MB.</p>
-                @error('image')
-                    <p class="mt-1 text-[13px] text-[#F53003]">{{ $message }}</p>
-                @enderror
             </div>
 
             <div class="flex items-center gap-2">

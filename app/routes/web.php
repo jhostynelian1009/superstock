@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\InventoryMovementController;
 use App\Http\Controllers\WhatsAppController;
 use Illuminate\Support\Facades\Route;
 
@@ -74,4 +75,6 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::resource('productos', ProductController::class)
         ->parameters(['productos' => 'producto'])
         ->except(['show']);
+    Route::resource('movimientos', InventoryMovementController::class)
+        ->parameters(['movimientos' => 'movimiento']);
 });

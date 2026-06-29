@@ -86,6 +86,18 @@
                 <span class="admin-module-label admin-module-label--active">Activo</span>
             </a>
 
+            {{-- Movimientos --}}
+            <a href="{{ route('admin.movimientos.index') }}"
+               class="admin-nav-item {{ request()->routeIs('admin.movimientos.*') ? 'active' : '' }}"
+               aria-label="Movimientos">
+                {{-- Heroicon: arrow-path --}}
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 16.5v-11h-.75m0 0a6 6 0 0 1 12 0v11m-12 0v4.5a1.5 1.5 0 0 0 1.5 1.5h9a1.5 1.5 0 0 0 1.5-1.5v-4.5m-12 0h18M7.5 16.5a1.5 1.5 0 0 1-1.5-1.5V5.25a1.5 1.5 0 0 1 1.5-1.5" />
+                </svg>
+                <span class="admin-nav-item-text">Movimientos</span>
+                <span class="admin-module-label admin-module-label--active">Activo</span>
+            </a>
+
             @if(($currentAdminUser ?? null)?->isPrimaryAdmin())
             <a href="{{ route('admin.solicitudes-admin.index') }}"
                class="admin-nav-item {{ request()->routeIs('admin.solicitudes-admin.*') ? 'active' : '' }}"

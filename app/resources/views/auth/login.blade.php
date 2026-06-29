@@ -22,12 +22,12 @@
     <div class="flex flex-col">
         <span class="input-label">Ingresar como <span class="required">*</span></span>
         <div class="grid grid-cols-2 gap-3">
-            <label class="border border-[var(--color-border-default)] rounded-sm p-3 flex flex-col items-center gap-1 cursor-pointer hover:bg-[var(--color-bg-muted)] transition-colors {{ old('login_as', 'client') === 'client' ? 'ring-2 ring-[var(--color-brand-primary)]' : '' }}">
-                <input type="radio" name="login_as" value="client" class="accent-[var(--color-brand-primary)]" {{ old('login_as', 'client') === 'client' ? 'checked' : '' }} />
+            <label class="border border-[var(--color-border-default)] rounded-sm p-3 flex flex-col items-center gap-1 cursor-pointer hover:bg-[var(--color-bg-muted)] transition-colors {{ old('login_as', \App\Models\User::ROLE_CLIENT) === \App\Models\User::ROLE_CLIENT ? 'ring-2 ring-[var(--color-brand-primary)]' : '' }}">
+                <input type="radio" name="login_as" value="{{ \App\Models\User::ROLE_CLIENT }}" class="accent-[var(--color-brand-primary)]" {{ old('login_as', \App\Models\User::ROLE_CLIENT) === \App\Models\User::ROLE_CLIENT ? 'checked' : '' }} />
                 <span class="text-sm font-medium mt-1">Cliente</span>
             </label>
-            <label class="border border-[var(--color-border-default)] rounded-sm p-3 flex flex-col items-center gap-1 cursor-pointer hover:bg-[var(--color-bg-muted)] transition-colors {{ old('login_as') === 'admin' ? 'ring-2 ring-[var(--color-brand-primary)]' : '' }}">
-                <input type="radio" name="login_as" value="admin" class="accent-[var(--color-brand-primary)]" {{ old('login_as') === 'admin' ? 'checked' : '' }} />
+            <label class="border border-[var(--color-border-default)] rounded-sm p-3 flex flex-col items-center gap-1 cursor-pointer hover:bg-[var(--color-bg-muted)] transition-colors {{ old('login_as') === \App\Models\User::ROLE_ADMIN ? 'ring-2 ring-[var(--color-brand-primary)]' : '' }}">
+                <input type="radio" name="login_as" value="{{ \App\Models\User::ROLE_ADMIN }}" class="accent-[var(--color-brand-primary)]" {{ old('login_as') === \App\Models\User::ROLE_ADMIN ? 'checked' : '' }} />
                 <span class="text-sm font-medium mt-1">Administrador</span>
             </label>
         </div>

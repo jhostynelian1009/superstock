@@ -6,10 +6,19 @@ use App\Models\Category;
 use App\Models\InventoryMovement;
 use App\Models\Product;
 use App\Models\User;
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
 class InventoryMovementModuleTest extends TestCase
 {
+    use RefreshDatabase;
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->withoutVite();
+    }
+
     public function test_admin_can_view_inventory_movements_index(): void
     {
         $admin = User::factory()->admin()->create();

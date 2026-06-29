@@ -72,6 +72,7 @@
                         <th class="px-4 py-3">Cantidad</th>
                         <th class="px-4 py-3">Usuario</th>
                         <th class="px-4 py-3">Proveedor</th>
+                        <th class="px-4 py-3">Motivo</th>
                         <th class="px-4 py-3">Referencia</th>
                         <th class="px-4 py-3 text-right">Acciones</th>
                     </tr>
@@ -103,7 +104,10 @@
                                 {{ $movement->user?->name }}
                             </td>
                             <td class="px-4 py-3 text-[#706f6c] dark:text-[#A1A09A]">
-                                {{ $movement->supplier?->name ?? '—' }}
+                                {{ $movement->supplier?->business_name ?? '—' }}
+                            </td>
+                            <td class="px-4 py-3 text-[#706f6c] dark:text-[#A1A09A]">
+                                {{ $movement->reason }}
                             </td>
                             <td class="px-4 py-3 text-xs font-mono text-[#706f6c] dark:text-[#A1A09A]">
                                 {{ $movement->reference ?? '—' }}
@@ -119,7 +123,7 @@
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="8" class="px-4 py-8 text-center text-[#706f6c] dark:text-[#A1A09A]">
+                            <td colspan="9" class="px-4 py-8 text-center text-[#706f6c] dark:text-[#A1A09A]">
                                 No hay movimientos registrados.
                             </td>
                         </tr>

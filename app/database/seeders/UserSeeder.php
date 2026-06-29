@@ -15,9 +15,12 @@ class UserSeeder extends Seeder
             ['email' => 'admin@superstock.com'],
             [
                 'name' => 'Administrador General',
+                'document_number' => '0000000000',
+                'phone' => '0999999999',
                 'password' => Hash::make('password'),
                 'role' => User::ROLE_ADMIN,
                 'is_active' => true,
+                'is_primary_admin' => true,
             ]
         );
 

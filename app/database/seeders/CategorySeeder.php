@@ -34,6 +34,10 @@ class CategorySeeder extends Seeder
                 'name' => 'Verduras',
                 'description' => 'Vegetales, hortalizas y legumbres frescas.',
             ],
+            [
+                'name' => 'Dulces',
+                'description' => 'Productos dulces disponibles en el catálogo.',
+            ],
         ];
 
         foreach ($categories as $category) {

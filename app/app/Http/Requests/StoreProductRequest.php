@@ -12,20 +12,16 @@ class StoreProductRequest extends FormRequest
         return true;
     }
 
-    /**
-     * @return array<string, mixed>
-     */
     public function rules(): array
     {
         return [
-            'name' => ['required', 'string', 'max:255'],
+            'sku' => ['required', 'string', 'max:60', Rule::unique('products', 'sku')],
+            'barcode' => ['nullable', 'string', 'max:50', Rule::unique('products', 'barcode')],
+            'name' => ['required', 'string', 'max:180'],
             'category_id' => ['required', 'exists:categories,id'],
-            'slug' => ['nullable', 'string', 'max:255', Rule::unique('products', 'slug')],
+            'unit_of_measure' => ['required', 'string', 'max:30'],
             'description' => ['nullable', 'string'],
-            'price' => ['required', 'numeric', 'gt:0'],
-            'stock' => ['required', 'integer', 'min:0'],
             'is_active' => ['sometimes', 'boolean'],
-            'image' => ['nullable', 'image', 'mimes:jpeg,png,webp', 'max:2048'],
         ];
     }
 
@@ -35,15 +31,17 @@ class StoreProductRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'name.required' => 'El nombre del producto es obligatorio.',
+            'sku.required' => 'El SKU es obligatorio.',
+            'sku.unique' => 'El SKU ya está en uso.',
+            'sku.max' => 'El SKU no puede superar los 60 caracteres.',
+            'barcode.unique' => 'El código de barras ya está en uso.',
+            'barcode.max' => 'El código de barras no puede superar los 50 caracteres.',
+            'name.required' => 'El nombre es obligatorio.',
+            'name.max' => 'El nombre no puede superar los 180 caracteres.',
             'category_id.required' => 'La categoría es obligatoria.',
             'category_id.exists' => 'La categoría seleccionada no es válida.',
-            'price.required' => 'El precio es obligatorio.',
-            'price.gt' => 'El precio debe ser mayor que cero.',
-            'stock.min' => 'El stock no puede ser negativo.',
-            'image.image' => 'El archivo debe ser una imagen válida.',
-            'image.mimes' => 'La imagen debe ser JPEG, PNG o WEBP.',
-            'image.max' => 'La imagen no puede superar 2MB.',
+            'unit_of_measure.required' => 'La unidad de medida es obligatoria.',
+            'unit_of_measure.max' => 'La unidad de medida no puede superar los 30 caracteres.',
         ];
     }
 

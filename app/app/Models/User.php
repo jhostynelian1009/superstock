@@ -10,7 +10,7 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    public const ROLE_ADMIN = 'Administrador';
+    public const ROLE_ADMIN    = 'Administrador';
     public const ROLE_EMPLOYEE = 'Empleado';
 
     /** @use HasFactory<UserFactory> */
@@ -21,10 +21,14 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'document_number',
+        'phone',
         'email',
         'password',
         'role',
         'is_active',
+        'is_primary_admin',
+        'permissions',
     ];
 
     /**
@@ -42,8 +46,10 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-            'is_active' => 'boolean',
+            'password'          => 'hashed',
+            'is_active'         => 'boolean',
+            'is_primary_admin'  => 'boolean',
+            'permissions'       => 'array',
         ];
     }
 
@@ -60,5 +66,23 @@ class User extends Authenticatable
     public function isEmployee(): bool
     {
         return $this->role === self::ROLE_EMPLOYEE;
+    }
+
+    public function isPrimaryAdmin(): bool
+    {
+        return $this->isAdmin() && $this->is_primary_admin;
+    }
+
+    public function hasPermissionTo(string $module): bool
+    {
+        if ($this->isPrimaryAdmin()) {
+            return true;
+        }
+
+        if (is_null($this->permissions)) {
+            return true;
+        }
+
+        return in_array($module, $this->permissions);
     }
 }

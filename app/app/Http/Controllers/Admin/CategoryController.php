@@ -14,12 +14,20 @@ class CategoryController extends Controller
 {
     public function index(): View
     {
-        $categories = Category::query()
-            ->withCount('products')
-            ->orderBy('name')
-            ->paginate(10);
+        $search = request('search');
+        
+        $query = Category::query()
+            ->withCount('products');
 
-        return view('admin.categories.index', compact('categories'));
+        if (filled($search)) {
+            $query->where('name', 'like', '%' . $search . '%');
+        }
+
+        $categories = $query->orderBy('name')
+            ->paginate(10)
+            ->withQueryString();
+
+        return view('admin.categories.index', compact('categories', 'search'));
     }
 
     public function create(): View
@@ -30,12 +38,6 @@ class CategoryController extends Controller
     public function store(StoreCategoryRequest $request): RedirectResponse
     {
         $data = $request->validated();
-
-        if (filled($data['slug'] ?? null)) {
-            $data['slug'] = Str::slug($data['slug']);
-        } else {
-            unset($data['slug']);
-        }
 
         Category::query()->create($data);
 
@@ -53,12 +55,6 @@ class CategoryController extends Controller
     {
         $data = $request->validated();
 
-        if (filled($data['slug'] ?? null)) {
-            $data['slug'] = Str::slug($data['slug']);
-        } else {
-            unset($data['slug']);
-        }
-
         $categoria->update($data);
 
         return redirect()
@@ -68,6 +64,12 @@ class CategoryController extends Controller
 
     public function destroy(Category $categoria): RedirectResponse
     {
+        if ($categoria->products()->exists()) {
+            return redirect()
+                ->route('admin.categorias.index')
+                ->with('error', 'No se puede eliminar la categoría "' . $categoria->name . '" porque tiene productos asociados.');
+        }
+
         $categoria->delete();
 
         return redirect()

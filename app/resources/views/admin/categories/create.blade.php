@@ -25,15 +25,6 @@
                 @enderror
             </div>
 
-            <div>
-                <label for="slug" class="mb-2 block text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC]">Slug</label>
-                <input type="text" name="slug" id="slug" value="{{ old('slug') }}"
-                    class="w-full rounded-sm border border-[#e3e3e0] bg-white px-4 py-3 text-sm text-[#1b1b18] focus:border-[#F53003] focus:outline-none focus:ring-2 focus:ring-[rgba(245,48,3,0.20)] dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC] @error('slug') border-[#F53003] @enderror">
-                <p class="mt-1 text-[13px] text-[#706f6c] dark:text-[#A1A09A]">Opcional. Se genera automáticamente desde el nombre.</p>
-                @error('slug')
-                    <p class="mt-1 text-[13px] text-[#F53003]">{{ $message }}</p>
-                @enderror
-            </div>
 
             <div>
                 <label for="description" class="mb-2 block text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC]">Descripción</label>

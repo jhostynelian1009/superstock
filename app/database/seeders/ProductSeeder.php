@@ -16,6 +16,7 @@ class ProductSeeder extends Seeder
         $carnes = Category::query()->where('name', 'Carnes')->first();
         $frutas = Category::query()->where('name', 'Frutas')->first();
         $verduras = Category::query()->where('name', 'Verduras')->first();
+        $dulces = Category::query()->where('name', 'Dulces')->first();
 
         $products = [
             [
@@ -70,6 +71,30 @@ class ProductSeeder extends Seeder
                 'name' => 'Zanahorias',
                 'description' => 'Zanahoria fresca de cultivo local, seleccionada por kilogramo.',
                 'unit_of_measure' => 'Kilogramo',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $dulces?->id,
+                'sku' => 'SKU-DULC-001',
+                'barcode' => '7861000100070',
+                'name' => 'Muffin de Chocolate',
+                'slug' => 'muffin-de-chocolate',
+                'description' => 'Muffin de chocolate disponible para pedidos.',
+                'unit_of_measure' => 'Unidad',
+                'price' => 3.50,
+                'image' => 'products/muffin-de-chocolate.jpg',
+                'is_active' => true,
+            ],
+            [
+                'category_id' => $bebidas?->id,
+                'sku' => 'SKU-BEBI-002',
+                'barcode' => '7861000100087',
+                'name' => 'Té Helado de Durazno',
+                'slug' => 'te-helado-de-durazno',
+                'description' => 'Té negro helado con sabor a durazno.',
+                'unit_of_measure' => 'Unidad',
+                'price' => 3.00,
+                'image' => 'products/te-helado-de-durazno.jpg',
                 'is_active' => true,
             ],
         ];

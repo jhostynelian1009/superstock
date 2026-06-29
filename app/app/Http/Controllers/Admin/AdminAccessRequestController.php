@@ -32,9 +32,12 @@ class AdminAccessRequestController extends Controller
 
         $plainCode = AdminAccessRequest::generatePlainCode();
 
+        $permissions = request()->input('permissions', []);
+
         $solicitud->storeVerificationCode($plainCode);
         $solicitud->update([
             'approved_by' => auth()->id(),
+            'permissions' => $permissions,
         ]);
 
         return back()->with([
@@ -62,5 +65,26 @@ class AdminAccessRequestController extends Controller
         ]);
 
         return back()->with('success', 'Solicitud rechazada correctamente.');
+    }
+
+    public function resend(AdminAccessRequest $solicitud): RedirectResponse
+    {
+        if (! $solicitud->isApproved()) {
+            return back()->with('error', 'Solo se puede reenviar el código para solicitudes aprobadas.');
+        }
+
+        $plainCode = AdminAccessRequest::generatePlainCode();
+
+        $solicitud->storeVerificationCode($plainCode);
+        $solicitud->update([
+            'approved_by' => auth()->id(),
+            'expires_at' => now()->addHours(24),
+        ]);
+
+        return back()->with([
+            'success' => 'Nuevo código generado correctamente. Comparte el código con la persona solicitante.',
+            'generated_admin_code' => $plainCode,
+            'generated_admin_email' => $solicitud->email,
+        ]);
     }
 }

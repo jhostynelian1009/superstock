@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="description" content="Panel Administrativo SnackConnect - Gestión de snacks y pedidos">
-    <title>@yield('title', 'Dashboard') — SnackConnect Admin</title>
+    <meta name="description" content="SuperStock — Sistema interno de gestión de inventario">
+    <title>@yield('title', 'Dashboard') — SuperStock</title>
 
     {{-- Tipografía Instrument Sans --}}
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -22,8 +22,8 @@
     <aside class="admin-sidebar" id="admin-sidebar">
         {{-- Logo --}}
         <div class="admin-sidebar-logo">
-            <div class="admin-sidebar-logo-icon">S</div>
-            <span class="admin-sidebar-logo-text">SnackConnect</span>
+            <div class="admin-sidebar-logo-icon" style="background-color: var(--color-brand-primary);">SS</div>
+            <span class="admin-sidebar-logo-text">SuperStock</span>
         </div>
 
         {{-- Navigation --}}
@@ -40,6 +40,7 @@
             </a>
 
             {{-- Productos --}}
+            @if(auth()->user()?->hasPermissionTo('productos'))
             <a href="{{ route('admin.productos.index') }}"
                class="admin-nav-item {{ request()->routeIs('admin.productos.*') ? 'active' : '' }}"
                aria-label="Productos">
@@ -50,8 +51,10 @@
                 <span class="admin-nav-item-text">Productos</span>
                 <span class="admin-module-label admin-module-label--active">Activo</span>
             </a>
+            @endif
 
             {{-- Categorías --}}
+            @if(auth()->user()?->hasPermissionTo('categorias'))
             <a href="{{ route('admin.categorias.index') }}"
                class="admin-nav-item {{ request()->routeIs('admin.categorias.*') ? 'active' : '' }}"
                aria-label="Categorías">
@@ -63,19 +66,40 @@
                 <span class="admin-nav-item-text">Categorías</span>
                 <span class="admin-module-label admin-module-label--active">Activo</span>
             </a>
+            @endif
 
-            {{-- Pedidos --}}
-            <a href="{{ route('admin.pedidos.index') }}"
-               class="admin-nav-item {{ request()->routeIs('admin.pedidos.*') ? 'active' : '' }}"
-               aria-label="Pedidos">
+            {{-- Proveedores --}}
+            @if(auth()->user()?->hasPermissionTo('proveedores'))
+            <a href="{{ route('admin.proveedores.index') }}"
+               class="admin-nav-item {{ request()->routeIs('admin.proveedores.*') ? 'active' : '' }}"
+               aria-label="Proveedores">
+                {{-- Heroicon: building-storefront --}}
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15a2.251 2.251 0 0 1 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25ZM6.75 12h.008v.008H6.75V12Zm0 3h.008v.008H6.75V15Zm0 3h.008v.008H6.75V18Z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 21v-7.5a.75.75 0 0 1 .75-.75h3a.75.75 0 0 1 .75.75V21m-4.5 0H2.36m11.14 0H18m0 0h3.64m-1.39 0V9.349M3.75 21V9.349m0 0a3.001 3.001 0 0 0 3.75-.615A2.993 2.993 0 0 0 9.75 9.75c.896 0 1.7-.393 2.25-1.016a2.993 2.993 0 0 0 2.25 1.016c.896 0 1.7-.393 2.25-1.016a3.001 3.001 0 0 0 3.75.614m-16.5 0a3.004 3.004 0 0 1-.621-4.72l1.189-1.19A1.5 1.5 0 0 1 5.378 3h13.243a1.5 1.5 0 0 1 1.06.44l1.19 1.189a3 3 0 0 1-.621 4.72M6.75 18h3.75a.75.75 0 0 0 .75-.75V13.5a.75.75 0 0 0-.75-.75H6.75a.75.75 0 0 0-.75.75v3.75c0 .414.336.75.75.75Z" />
                 </svg>
-                <span class="admin-nav-item-text">Pedidos</span>
+                <span class="admin-nav-item-text">Proveedores</span>
                 <span class="admin-module-label admin-module-label--active">Activo</span>
             </a>
+            @endif
+
+            {{-- Inventario --}}
+            @if(auth()->user()?->hasPermissionTo('inventario'))
+            <a href="{{ route('admin.inventario.index') }}"
+               class="admin-nav-item {{ request()->routeIs('admin.inventario.*') ? 'active' : '' }}"
+               aria-label="Inventario">
+                {{-- Heroicon: archive-box --}}
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="m20.25 7.5-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125H3.375c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z" />
+                </svg>
+                <span class="admin-nav-item-text">Inventario</span>
+                <span class="admin-module-label admin-module-label--active">Activo</span>
+            </a>
+            @endif
+
+
 
             {{-- Usuarios --}}
+            @if(auth()->user()?->hasPermissionTo('usuarios'))
             <a href="{{ route('admin.usuarios.index') }}"
                class="admin-nav-item {{ request()->routeIs('admin.usuarios.*') ? 'active' : '' }}"
                aria-label="Usuarios">
@@ -85,8 +109,23 @@
                 <span class="admin-nav-item-text">Usuarios</span>
                 <span class="admin-module-label admin-module-label--active">Activo</span>
             </a>
+            @endif
 
-            @if(($currentAdminUser ?? null)?->isPrimaryAdmin())
+            {{-- Movimientos --}}
+            @if(auth()->user()?->hasPermissionTo('movimientos'))
+            <a href="{{ route('admin.movimientos.index') }}"
+               class="admin-nav-item {{ request()->routeIs('admin.movimientos.*') ? 'active' : '' }}"
+               aria-label="Movimientos">
+                {{-- Heroicon: arrow-path --}}
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 16.5v-11h-.75m0 0a6 6 0 0 1 12 0v11m-12 0v4.5a1.5 1.5 0 0 0 1.5 1.5h9a1.5 1.5 0 0 0 1.5-1.5v-4.5m-12 0h18M7.5 16.5a1.5 1.5 0 0 1-1.5-1.5V5.25a1.5 1.5 0 0 1 1.5-1.5" />
+                </svg>
+                <span class="admin-nav-item-text">Movimientos</span>
+                <span class="admin-module-label admin-module-label--active">Activo</span>
+            </a>
+            @endif
+
+            @if(($currentAdminUser ?? null)?->isPrimaryAdmin() && auth()->user()?->hasPermissionTo('solicitudes-admin'))
             <a href="{{ route('admin.solicitudes-admin.index') }}"
                class="admin-nav-item {{ request()->routeIs('admin.solicitudes-admin.*') ? 'active' : '' }}"
                aria-label="Solicitudes admin">
@@ -151,7 +190,7 @@
 
                 {{-- Breadcrumbs --}}
                 <nav class="admin-navbar-breadcrumb">
-                    <a href="{{ route('admin.dashboard') }}">Admin</a>
+                    <a href="{{ route('admin.dashboard') }}">SuperStock</a>
                     <span class="separator">/</span>
                     <span class="current">@yield('breadcrumb', 'Dashboard')</span>
                 </nav>
@@ -159,31 +198,36 @@
 
             {{-- User Menu --}}
             <div class="admin-navbar-user">
-                @if(($currentAdminUser ?? null)?->isPrimaryAdmin())
-                <a href="{{ route('admin.solicitudes-admin.index') }}" class="admin-hamburger" style="display: flex; position: relative;" aria-label="Notificaciones">
+                <button type="button" class="admin-hamburger admin-notif-btn" style="display: flex; position: relative;" data-admin-panel-open="notificaciones" aria-label="Notificaciones" id="notif-bell-btn">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
                     </svg>
                     @if(($pendingAdminRequests ?? 0) > 0)
-                        <span style="position:absolute;top:-4px;right:-4px;min-width:18px;height:18px;padding:0 4px;border-radius:9999px;background:#F53003;color:#fff;font-size:11px;font-weight:600;display:flex;align-items:center;justify-content:center;">
-                            {{ $pendingAdminRequests }}
-                        </span>
+                        <span id="notif-badge" style="
+                            position: absolute;
+                            top: -4px; right: -4px;
+                            min-width: 18px; height: 18px;
+                            padding: 0 4px;
+                            border-radius: 999px;
+                            background: var(--color-danger);
+                            color: #fff;
+                            font-size: 0.65rem;
+                            font-weight: 700;
+                            display: inline-flex;
+                            align-items: center;
+                            justify-content: center;
+                            border: 2px solid var(--color-bg-surface);
+                            animation: sc-badgePulse 2s infinite ease-in-out;
+                        ">{{ $pendingAdminRequests }}</span>
                     @endif
-                </a>
-                @else
-                <button type="button" class="admin-hamburger" style="display: flex;" data-admin-panel-open="notificaciones" aria-label="Notificaciones">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
-                    </svg>
                 </button>
-                @endif
 
                 <button type="button" data-admin-panel-open="configuracion" style="display: flex; align-items: center; gap: var(--space-3); border: none; background: none; cursor: pointer; color: inherit; font: inherit; padding: 0;">
-                    <div class="admin-navbar-avatar">{{ strtoupper(substr($currentAdminUser->name ?? 'A', 0, 1)) }}</div>
+                    <div class="admin-navbar-avatar">{{ strtoupper(substr(auth()->user()->name ?? 'U', 0, 1)) }}</div>
                     <div class="admin-navbar-user-info">
-                        <span class="admin-navbar-user-name">{{ $currentAdminUser->name ?? 'Admin' }}</span>
+                        <span class="admin-navbar-user-name">{{ auth()->user()->name ?? 'Usuario' }}</span>
                         <span class="admin-navbar-user-role">
-                            {{ ($currentAdminUser ?? null)?->isPrimaryAdmin() ? 'Administrador principal' : 'Administrador' }}
+                            {{ auth()->user()->role ?? 'Empleado' }}
                         </span>
                     </div>
                 </button>
@@ -197,7 +241,7 @@
 
         {{-- Footer --}}
         <footer class="admin-footer">
-            SnackConnect &copy; {{ date('Y') }} — Todos los derechos reservados. Hecho por Estudiantes Del ISTAE.
+            SuperStock &copy; {{ date('Y') }} — Todos los derechos reservados. Control claro. Inventario confiable.
         </footer>
     </div>
 
@@ -247,5 +291,26 @@
             }
         });
     </script>
+
+    {{-- Auto-open notifications panel when a code was just generated --}}
+    @if(session('generated_admin_code'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Wait a short tick so ScLabelModals is initialized
+            setTimeout(function () {
+                const panel = document.getElementById('admin-panel-notificaciones');
+                if (panel && window.ScLabelModals) {
+                    window.ScLabelModals.open('notificaciones');
+                } else if (panel) {
+                    // Fallback: add is-open class directly
+                    panel.setAttribute('aria-hidden', 'false');
+                    panel.classList.add('is-open');
+                    const overlay = document.getElementById('admin-panel-overlay');
+                    if (overlay) { overlay.classList.add('is-open'); overlay.setAttribute('aria-hidden', 'false'); }
+                }
+            }, 150);
+        });
+    </script>
+    @endif
 </body>
 </html>

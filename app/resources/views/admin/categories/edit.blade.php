@@ -17,12 +17,12 @@
 
             <div>
                 <label for="name" class="mb-2 block text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC]">
-                    Nombre <span class="text-[#F53003]">*</span>
+                    Nombre <span class="text-brand-primary">*</span>
                 </label>
                 <input type="text" name="name" id="name" value="{{ old('name', $category->name) }}" required
-                    class="w-full rounded-sm border border-[#e3e3e0] bg-white px-4 py-3 text-sm text-[#1b1b18] focus:border-[#F53003] focus:outline-none focus:ring-2 focus:ring-[rgba(245,48,3,0.20)] dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC] @error('name') border-[#F53003] @enderror">
+                    class="w-full rounded-sm border border-[#e3e3e0] bg-white px-4 py-3 text-sm text-[#1b1b18] focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/20 dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC] @error('name') border-brand-primary @enderror">
                 @error('name')
-                    <p class="mt-1 text-[13px] text-[#F53003]">{{ $message }}</p>
+                    <p class="mt-1 text-[13px] text-brand-primary">{{ $message }}</p>
                 @enderror
             </div>
 
@@ -30,9 +30,9 @@
             <div>
                 <label for="description" class="mb-2 block text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC]">Descripción</label>
                 <textarea name="description" id="description" rows="4"
-                    class="min-h-[120px] w-full resize-y rounded-sm border border-[#e3e3e0] bg-white px-4 py-3 text-sm text-[#1b1b18] focus:border-[#F53003] focus:outline-none focus:ring-2 focus:ring-[rgba(245,48,3,0.20)] dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC]">{{ old('description', $category->description) }}</textarea>
+                    class="min-h-[120px] w-full resize-y rounded-sm border border-[#e3e3e0] bg-white px-4 py-3 text-sm text-[#1b1b18] focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/20 dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC]">{{ old('description', $category->description) }}</textarea>
                 @error('description')
-                    <p class="mt-1 text-[13px] text-[#F53003]">{{ $message }}</p>
+                    <p class="mt-1 text-[13px] text-brand-primary">{{ $message }}</p>
                 @enderror
             </div>
 

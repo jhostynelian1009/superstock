@@ -16,10 +16,10 @@
 
             <div>
                 <label for="product_id" class="mb-2 block text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC]">
-                    Producto <span class="text-[#F53003]">*</span>
+                    Producto <span class="text-brand-primary">*</span>
                 </label>
                 <select name="product_id" id="product_id" required
-                    class="w-full rounded-sm border border-[#e3e3e0] bg-white px-4 py-3 text-sm focus:border-[#F53003] focus:outline-none focus:ring-2 focus:ring-[rgba(245,48,3,0.20)] dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC] @error('product_id') border-[#F53003] @enderror">
+                    class="w-full rounded-sm border border-[#e3e3e0] bg-white px-4 py-3 text-sm focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/20 dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC] @error('product_id') border-brand-primary @enderror">
                     <option value="">Selecciona un producto</option>
                     @foreach ($products as $product)
                         <option value="{{ $product->id }}" @selected(old('product_id') == $product->id)>
@@ -28,40 +28,40 @@
                     @endforeach
                 </select>
                 @error('product_id')
-                    <p class="mt-1 text-[13px] text-[#F53003]">{{ $message }}</p>
+                    <p class="mt-1 text-[13px] text-brand-primary">{{ $message }}</p>
                 @enderror
             </div>
 
             <div>
                 <label for="movement_type" class="mb-2 block text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC]">
-                    Tipo de movimiento <span class="text-[#F53003]">*</span>
+                    Tipo de movimiento <span class="text-brand-primary">*</span>
                 </label>
                 <select name="movement_type" id="movement_type" required
-                    class="w-full rounded-sm border border-[#e3e3e0] bg-white px-4 py-3 text-sm focus:border-[#F53003] focus:outline-none focus:ring-2 focus:ring-[rgba(245,48,3,0.20)] dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC] @error('movement_type') border-[#F53003] @enderror">
+                    class="w-full rounded-sm border border-[#e3e3e0] bg-white px-4 py-3 text-sm focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/20 dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC] @error('movement_type') border-brand-primary @enderror">
                     <option value="">Selecciona un tipo</option>
                     <option value="Entrada" @selected(old('movement_type') === 'Entrada')>Entrada</option>
                     <option value="Salida" @selected(old('movement_type') === 'Salida')>Salida</option>
                 </select>
                 @error('movement_type')
-                    <p class="mt-1 text-[13px] text-[#F53003]">{{ $message }}</p>
+                    <p class="mt-1 text-[13px] text-brand-primary">{{ $message }}</p>
                 @enderror
             </div>
 
             <div>
                 <label for="quantity" class="mb-2 block text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC]">
-                    Cantidad <span class="text-[#F53003]">*</span>
+                    Cantidad <span class="text-brand-primary">*</span>
                 </label>
                 <input type="number" name="quantity" id="quantity" value="{{ old('quantity') }}" step="0.001" min="0.001" required
-                    class="w-full rounded-sm border border-[#e3e3e0] bg-white px-4 py-3 text-sm focus:border-[#F53003] focus:outline-none focus:ring-2 focus:ring-[rgba(245,48,3,0.20)] dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC] @error('quantity') border-[#F53003] @enderror">
+                    class="w-full rounded-sm border border-[#e3e3e0] bg-white px-4 py-3 text-sm focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/20 dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC] @error('quantity') border-brand-primary @enderror">
                 @error('quantity')
-                    <p class="mt-1 text-[13px] text-[#F53003]">{{ $message }}</p>
+                    <p class="mt-1 text-[13px] text-brand-primary">{{ $message }}</p>
                 @enderror
             </div>
 
             <div>
                 <label for="supplier_id" class="mb-2 block text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC]">Proveedor (opcional)</label>
                 <select name="supplier_id" id="supplier_id"
-                    class="w-full rounded-sm border border-[#e3e3e0] bg-white px-4 py-3 text-sm focus:border-[#F53003] focus:outline-none focus:ring-2 focus:ring-[rgba(245,48,3,0.20)] dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC] @error('supplier_id') border-[#F53003] @enderror">
+                    class="w-full rounded-sm border border-[#e3e3e0] bg-white px-4 py-3 text-sm focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/20 dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC] @error('supplier_id') border-brand-primary @enderror">
                     <option value="">Sin proveedor</option>
                     @foreach ($suppliers as $supplier)
                         <option value="{{ $supplier->id }}" @selected(old('supplier_id') == $supplier->id)>
@@ -70,28 +70,28 @@
                     @endforeach
                 </select>
                 @error('supplier_id')
-                    <p class="mt-1 text-[13px] text-[#F53003]">{{ $message }}</p>
+                    <p class="mt-1 text-[13px] text-brand-primary">{{ $message }}</p>
                 @enderror
             </div>
 
             <div>
                 <label for="reason" class="mb-2 block text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC]">
-                    Motivo <span class="text-[#F53003]">*</span>
+                    Motivo <span class="text-brand-primary">*</span>
                 </label>
                 <textarea name="reason" id="reason" rows="3" required
-                    class="min-h-[100px] w-full resize-y rounded-sm border border-[#e3e3e0] bg-white px-4 py-3 text-sm focus:border-[#F53003] focus:outline-none focus:ring-2 focus:ring-[rgba(245,48,3,0.20)] dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC] @error('reason') border-[#F53003] @enderror">{{ old('reason') }}</textarea>
+                    class="min-h-[100px] w-full resize-y rounded-sm border border-[#e3e3e0] bg-white px-4 py-3 text-sm focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/20 dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC] @error('reason') border-brand-primary @enderror">{{ old('reason') }}</textarea>
                 @error('reason')
-                    <p class="mt-1 text-[13px] text-[#F53003]">{{ $message }}</p>
+                    <p class="mt-1 text-[13px] text-brand-primary">{{ $message }}</p>
                 @enderror
             </div>
 
             <div>
                 <label for="reference" class="mb-2 block text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC]">Referencia (opcional)</label>
                 <input type="text" name="reference" id="reference" value="{{ old('reference') }}" maxlength="100"
-                    class="w-full rounded-sm border border-[#e3e3e0] bg-white px-4 py-3 text-sm focus:border-[#F53003] focus:outline-none focus:ring-2 focus:ring-[rgba(245,48,3,0.20)] dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC] @error('reference') border-[#F53003] @enderror"
+                    class="w-full rounded-sm border border-[#e3e3e0] bg-white px-4 py-3 text-sm focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/20 dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC] @error('reference') border-brand-primary @enderror"
                     placeholder="Ej: ORD-001, FAC-2026-001">
                 @error('reference')
-                    <p class="mt-1 text-[13px] text-[#F53003]">{{ $message }}</p>
+                    <p class="mt-1 text-[13px] text-brand-primary">{{ $message }}</p>
                 @enderror
             </div>
 

@@ -25,7 +25,7 @@
             {{-- Razón Social --}}
             <div class="mb-5">
                 <label for="business_name" class="mb-1.5 block text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC]">
-                    Razón Social <span class="text-[#F53003]">*</span>
+                    Razón Social <span class="text-brand-primary">*</span>
                 </label>
                 <input
                     type="text"
@@ -35,12 +35,12 @@
                     maxlength="180"
                     required
                     class="w-full rounded-sm border px-4 py-2 text-sm outline-none transition
-                        {{ $errors->has('business_name') ? 'border-[#F53003] focus:ring-[#F53003]' : 'border-[#e3e3e0] focus:border-[#F53003] focus:ring-[#F53003]' }}
+                        {{ $errors->has('business_name') ? 'border-brand-primary focus:ring-brand-primary' : 'border-[#e3e3e0] focus:border-brand-primary focus:ring-brand-primary' }}
                         bg-white text-[#1b1b18] focus:ring-1 dark:border-[#3E3E3A] dark:bg-[#0a0a0a] dark:text-[#EDEDEC]"
                     aria-describedby="{{ $errors->has('business_name') ? 'business_name_error' : '' }}"
                 >
                 @error('business_name')
-                    <p id="business_name_error" class="mt-1 text-xs text-[#F53003]">{{ $message }}</p>
+                    <p id="business_name_error" class="mt-1 text-xs text-brand-primary">{{ $message }}</p>
                 @enderror
             </div>
 
@@ -56,12 +56,12 @@
                     value="{{ old('tax_identifier', $supplier->tax_identifier) }}"
                     maxlength="30"
                     class="w-full rounded-sm border px-4 py-2 text-sm outline-none transition
-                        {{ $errors->has('tax_identifier') ? 'border-[#F53003] focus:ring-[#F53003]' : 'border-[#e3e3e0] focus:border-[#F53003] focus:ring-[#F53003]' }}
+                        {{ $errors->has('tax_identifier') ? 'border-brand-primary focus:ring-brand-primary' : 'border-[#e3e3e0] focus:border-brand-primary focus:ring-brand-primary' }}
                         bg-white text-[#1b1b18] focus:ring-1 dark:border-[#3E3E3A] dark:bg-[#0a0a0a] dark:text-[#EDEDEC]"
                     aria-describedby="{{ $errors->has('tax_identifier') ? 'tax_identifier_error' : '' }}"
                 >
                 @error('tax_identifier')
-                    <p id="tax_identifier_error" class="mt-1 text-xs text-[#F53003]">{{ $message }}</p>
+                    <p id="tax_identifier_error" class="mt-1 text-xs text-brand-primary">{{ $message }}</p>
                 @enderror
             </div>
 
@@ -76,7 +76,7 @@
                     name="contact_name"
                     value="{{ old('contact_name', $supplier->contact_name) }}"
                     maxlength="150"
-                    class="w-full rounded-sm border border-[#e3e3e0] bg-white px-4 py-2 text-sm text-[#1b1b18] outline-none transition focus:border-[#F53003] focus:ring-1 focus:ring-[#F53003] dark:border-[#3E3E3A] dark:bg-[#0a0a0a] dark:text-[#EDEDEC]"
+                    class="w-full rounded-sm border border-[#e3e3e0] bg-white px-4 py-2 text-sm text-[#1b1b18] outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary dark:border-[#3E3E3A] dark:bg-[#0a0a0a] dark:text-[#EDEDEC]"
                 >
             </div>
 
@@ -91,7 +91,7 @@
                     name="phone"
                     value="{{ old('phone', $supplier->phone) }}"
                     maxlength="30"
-                    class="w-full rounded-sm border border-[#e3e3e0] bg-white px-4 py-2 text-sm text-[#1b1b18] outline-none transition focus:border-[#F53003] focus:ring-1 focus:ring-[#F53003] dark:border-[#3E3E3A] dark:bg-[#0a0a0a] dark:text-[#EDEDEC]"
+                    class="w-full rounded-sm border border-[#e3e3e0] bg-white px-4 py-2 text-sm text-[#1b1b18] outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary dark:border-[#3E3E3A] dark:bg-[#0a0a0a] dark:text-[#EDEDEC]"
                 >
             </div>
 
@@ -107,12 +107,12 @@
                     value="{{ old('email', $supplier->email) }}"
                     maxlength="255"
                     class="w-full rounded-sm border px-4 py-2 text-sm outline-none transition
-                        {{ $errors->has('email') ? 'border-[#F53003] focus:ring-[#F53003]' : 'border-[#e3e3e0] focus:border-[#F53003] focus:ring-[#F53003]' }}
+                        {{ $errors->has('email') ? 'border-brand-primary focus:ring-brand-primary' : 'border-[#e3e3e0] focus:border-brand-primary focus:ring-brand-primary' }}
                         bg-white text-[#1b1b18] focus:ring-1 dark:border-[#3E3E3A] dark:bg-[#0a0a0a] dark:text-[#EDEDEC]"
                     aria-describedby="{{ $errors->has('email') ? 'email_error' : '' }}"
                 >
                 @error('email')
-                    <p id="email_error" class="mt-1 text-xs text-[#F53003]">{{ $message }}</p>
+                    <p id="email_error" class="mt-1 text-xs text-brand-primary">{{ $message }}</p>
                 @enderror
             </div>
 
@@ -130,7 +130,7 @@
                             {{ old('is_active', $supplier->is_active) ? 'checked' : '' }}
                             class="peer sr-only"
                         >
-                        <div class="peer h-6 w-11 rounded-full bg-[#e3e3e0] after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-[#F53003] peer-checked:after:translate-x-full peer-focus:ring-2 peer-focus:ring-[#F53003] dark:bg-[#3E3E3A]"></div>
+                        <div class="peer h-6 w-11 rounded-full bg-[#e3e3e0] after:absolute after:start-[2px] after:top-[2px] after:h-5 after:w-5 after:rounded-full after:bg-white after:transition-all after:content-[''] peer-checked:bg-brand-primary peer-checked:after:translate-x-full peer-focus:ring-2 peer-focus:ring-brand-primary dark:bg-[#3E3E3A]"></div>
                         <span class="text-sm text-[#1b1b18] dark:text-[#EDEDEC]">Activo</span>
                     </label>
                 </div>

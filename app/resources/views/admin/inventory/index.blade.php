@@ -21,7 +21,7 @@
                 name="search"
                 value="{{ $search }}"
                 placeholder="Buscar por producto, SKU o categoría…"
-                class="w-full max-w-sm rounded-sm border border-[#e3e3e0] bg-white px-4 py-2 text-sm text-[#1b1b18] outline-none transition focus:border-[#F53003] focus:ring-1 focus:ring-[#F53003] dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC]"
+                class="w-full max-w-sm rounded-sm border border-[#e3e3e0] bg-white px-4 py-2 text-sm text-[#1b1b18] outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC]"
                 aria-label="Buscar en inventario"
             >
             <button type="submit"
@@ -40,7 +40,7 @@
     <div class="overflow-hidden rounded-lg border border-[#e3e3e0] shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:border-[#3E3E3A]">
         <div class="overflow-x-auto">
             <table class="w-full min-w-[700px] text-left text-sm">
-                <thead class="bg-[#fff2f2] text-xs font-medium uppercase tracking-wide text-[#706f6c] dark:bg-[#1D0002] dark:text-[#A1A09A]">
+                <thead class="bg-slate-50 dark:bg-slate-900/60 text-xs font-medium uppercase tracking-wide text-[#706f6c] dark:bg-slate-900/50 dark:text-[#A1A09A]">
                     <tr>
                         <th class="px-4 py-3">Producto</th>
                         <th class="px-4 py-3">SKU</th>

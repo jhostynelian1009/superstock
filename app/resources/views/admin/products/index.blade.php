@@ -15,15 +15,15 @@
                        name="search" 
                        value="{{ request('search') }}" 
                        placeholder="Buscar por nombre, SKU o código..." 
-                       class="w-64 rounded-sm border border-[#e3e3e0] bg-white px-3 py-1.5 pr-8 text-sm focus:border-[#F53003] focus:outline-none focus:ring-2 focus:ring-[rgba(245,48,3,0.20)] dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC]">
+                       class="w-64 rounded-sm border border-[#e3e3e0] bg-white px-3 py-1.5 pr-8 text-sm focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/20 dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC]">
                 @if(request('search'))
-                    <a href="{{ route('admin.productos.index') }}" class="absolute right-8 top-1/2 -translate-y-1/2 text-[#706f6c] hover:text-[#F53003]" aria-label="Limpiar búsqueda">
+                    <a href="{{ route('admin.productos.index') }}" class="absolute right-8 top-1/2 -translate-y-1/2 text-[#706f6c] hover:text-brand-primary" aria-label="Limpiar búsqueda">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18 18 6M6 6l12 12"/>
                         </svg>
                     </a>
                 @endif
-                <button type="submit" class="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#706f6c] hover:text-[#F53003]" aria-label="Buscar">
+                <button type="submit" class="absolute right-2.5 top-1/2 -translate-y-1/2 text-[#706f6c] hover:text-brand-primary" aria-label="Buscar">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.602 10.602Z"/>
                     </svg>
@@ -31,7 +31,7 @@
             </form>
 
             <a href="{{ route('admin.productos.create') }}"
-                class="inline-flex items-center justify-center rounded-sm bg-[#F53003] px-5 py-1.5 text-sm font-medium text-white transition-colors hover:bg-[#D42800]">
+                class="inline-flex items-center justify-center rounded-sm bg-brand-primary px-5 py-1.5 text-sm font-medium text-white transition-colors hover:bg-brand-primary-hover">
                 Nuevo producto
             </a>
         </div>
@@ -42,7 +42,7 @@
     <div class="overflow-hidden rounded-lg border border-[#e3e3e0] shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:border-[#3E3E3A]">
         <div class="overflow-x-auto">
             <table class="w-full min-w-[800px] text-left text-sm">
-                <thead class="bg-[#fff2f2] text-xs font-medium uppercase tracking-wide text-[#706f6c] dark:bg-[#1D0002] dark:text-[#A1A09A]">
+                <thead class="bg-slate-50 dark:bg-slate-900/60 text-xs font-medium uppercase tracking-wide text-[#706f6c] dark:bg-slate-900/50 dark:text-[#A1A09A]">
                     <tr>
                         <th class="px-4 py-3">SKU</th>
                         <th class="px-4 py-3">Código</th>
@@ -86,7 +86,7 @@
                                         data-sc-action-url="{{ route('admin.productos.destroy', $product) }}"
                                         data-sc-action-title="Eliminar producto"
                                         data-sc-action-data='@json($actionData)'
-                                        class="text-sm font-medium text-[#F53003] underline-offset-4 hover:underline">
+                                        class="text-sm font-medium text-brand-primary underline-offset-4 hover:underline">
                                         Eliminar
                                     </button>
                                 </div>

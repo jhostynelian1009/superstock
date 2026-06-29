@@ -26,12 +26,12 @@
             name="search"
             value="{{ $search ?? '' }}"
             placeholder="Buscar por nombre, email o cédula…"
-            class="w-full max-w-sm rounded-sm border border-[#e3e3e0] bg-white px-4 py-2 text-sm text-[#1b1b18] outline-none transition focus:border-[#F53003] focus:ring-1 focus:ring-[#F53003] dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC]"
+            class="w-full max-w-sm rounded-sm border border-[#e3e3e0] bg-white px-4 py-2 text-sm text-[#1b1b18] outline-none transition focus:border-brand-primary focus:ring-1 focus:ring-brand-primary dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC]"
             aria-label="Buscar usuario"
         >
         <select
             name="role"
-            class="rounded-sm border border-[#e3e3e0] bg-white px-3 py-2 text-sm text-[#1b1b18] outline-none focus:border-[#F53003] dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC]"
+            class="rounded-sm border border-[#e3e3e0] bg-white px-3 py-2 text-sm text-[#1b1b18] outline-none focus:border-brand-primary dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC]"
             aria-label="Filtrar por rol"
         >
             <option value="">Todos los roles</option>
@@ -53,7 +53,7 @@
     <div class="overflow-hidden rounded-lg border border-[#e3e3e0] shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:border-[#3E3E3A]">
         <div class="overflow-x-auto">
             <table class="w-full min-w-[900px] text-left text-sm">
-                <thead class="bg-[#fff2f2] text-xs font-medium uppercase tracking-wide text-[#706f6c] dark:bg-[#1D0002] dark:text-[#A1A09A]">
+                <thead class="bg-slate-50 dark:bg-slate-900/60 text-xs font-medium uppercase tracking-wide text-[#706f6c] dark:bg-slate-900/50 dark:text-[#A1A09A]">
                     <tr>
                         <th class="px-4 py-3">Nombre</th>
                         <th class="px-4 py-3">Cédula / ID</th>
@@ -100,31 +100,31 @@
                                                 
                                                 <div class="flex flex-col gap-2">
                                                     <label class="flex items-center gap-2 cursor-pointer text-sm">
-                                                        <input type="checkbox" name="permissions[]" value="productos" {{ $user->hasPermissionTo('productos') ? 'checked' : '' }} class="rounded border-gray-300 text-[#F53003] focus:ring-[#F53003]">
+                                                        <input type="checkbox" name="permissions[]" value="productos" {{ $user->hasPermissionTo('productos') ? 'checked' : '' }} class="rounded border-gray-300 text-brand-primary focus:ring-brand-primary">
                                                         <span>Productos</span>
                                                     </label>
                                                     <label class="flex items-center gap-2 cursor-pointer text-sm">
-                                                        <input type="checkbox" name="permissions[]" value="categorias" {{ $user->hasPermissionTo('categorias') ? 'checked' : '' }} class="rounded border-gray-300 text-[#F53003] focus:ring-[#F53003]">
+                                                        <input type="checkbox" name="permissions[]" value="categorias" {{ $user->hasPermissionTo('categorias') ? 'checked' : '' }} class="rounded border-gray-300 text-brand-primary focus:ring-brand-primary">
                                                         <span>Categorías</span>
                                                     </label>
                                                     <label class="flex items-center gap-2 cursor-pointer text-sm">
-                                                        <input type="checkbox" name="permissions[]" value="proveedores" {{ $user->hasPermissionTo('proveedores') ? 'checked' : '' }} class="rounded border-gray-300 text-[#F53003] focus:ring-[#F53003]">
+                                                        <input type="checkbox" name="permissions[]" value="proveedores" {{ $user->hasPermissionTo('proveedores') ? 'checked' : '' }} class="rounded border-gray-300 text-brand-primary focus:ring-brand-primary">
                                                         <span>Proveedores</span>
                                                     </label>
                                                     <label class="flex items-center gap-2 cursor-pointer text-sm">
-                                                        <input type="checkbox" name="permissions[]" value="inventario" {{ $user->hasPermissionTo('inventario') ? 'checked' : '' }} class="rounded border-gray-300 text-[#F53003] focus:ring-[#F53003]">
+                                                        <input type="checkbox" name="permissions[]" value="inventario" {{ $user->hasPermissionTo('inventario') ? 'checked' : '' }} class="rounded border-gray-300 text-brand-primary focus:ring-brand-primary">
                                                         <span>Inventario</span>
                                                     </label>
                                                     <label class="flex items-center gap-2 cursor-pointer text-sm">
-                                                        <input type="checkbox" name="permissions[]" value="movimientos" {{ $user->hasPermissionTo('movimientos') ? 'checked' : '' }} class="rounded border-gray-300 text-[#F53003] focus:ring-[#F53003]">
+                                                        <input type="checkbox" name="permissions[]" value="movimientos" {{ $user->hasPermissionTo('movimientos') ? 'checked' : '' }} class="rounded border-gray-300 text-brand-primary focus:ring-brand-primary">
                                                         <span>Movimientos</span>
                                                     </label>
                                                     <label class="flex items-center gap-2 cursor-pointer text-sm">
-                                                        <input type="checkbox" name="permissions[]" value="usuarios" {{ $user->hasPermissionTo('usuarios') ? 'checked' : '' }} class="rounded border-gray-300 text-[#F53003] focus:ring-[#F53003]">
+                                                        <input type="checkbox" name="permissions[]" value="usuarios" {{ $user->hasPermissionTo('usuarios') ? 'checked' : '' }} class="rounded border-gray-300 text-brand-primary focus:ring-brand-primary">
                                                         <span>Usuarios</span>
                                                     </label>
                                                     <label class="flex items-center gap-2 cursor-pointer text-sm">
-                                                        <input type="checkbox" name="permissions[]" value="solicitudes-admin" {{ $user->hasPermissionTo('solicitudes-admin') ? 'checked' : '' }} class="rounded border-gray-300 text-[#F53003] focus:ring-[#F53003]">
+                                                        <input type="checkbox" name="permissions[]" value="solicitudes-admin" {{ $user->hasPermissionTo('solicitudes-admin') ? 'checked' : '' }} class="rounded border-gray-300 text-brand-primary focus:ring-brand-primary">
                                                         <span>Solicitudes Admin</span>
                                                     </label>
                                                 </div>
@@ -133,7 +133,7 @@
                                                     <button type="button" onclick="document.getElementById('modal-permissions-{{ $user->id }}').close()" class="px-3 py-1.5 border border-[#e3e3e0] rounded text-xs font-medium dark:border-[#3E3E3A] hover:bg-gray-50 dark:hover:bg-gray-800">
                                                         Cancelar
                                                     </button>
-                                                    <button type="submit" class="px-3 py-1.5 bg-[#F53003] text-white rounded text-xs font-medium hover:bg-[#D22602]">
+                                                    <button type="submit" class="px-3 py-1.5 bg-brand-primary text-white rounded text-xs font-medium hover:bg-brand-primary-hover">
                                                         Guardar Cambios
                                                     </button>
                                                 </div>

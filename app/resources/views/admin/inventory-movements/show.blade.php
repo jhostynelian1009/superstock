@@ -105,7 +105,7 @@
                 </div>
             </div>
 
-            <div class="rounded-lg bg-[#fff2f2] p-4 dark:bg-[#1D0002]">
+            <div class="rounded-lg bg-slate-50 dark:bg-slate-900/60 p-4 dark:bg-slate-900/50">
                 <p class="text-xs font-medium text-[#1b1b18] dark:text-[#EDEDEC]">ID del movimiento</p>
                 <p class="mt-1 font-mono text-sm text-[#706f6c] dark:text-[#A1A09A]">#{{ $movimiento->id }}</p>
             </div>

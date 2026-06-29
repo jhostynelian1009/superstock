@@ -12,7 +12,7 @@
             </p>
         </div>
         @if($pendingCount > 0)
-            <span class="inline-flex rounded-full bg-[#F3BEC7] px-4 py-2 text-sm font-medium text-[#1b1b18] dark:bg-[#1D0002] dark:text-[#EDEDEC]">
+            <span class="inline-flex rounded-full bg-[#F3BEC7] px-4 py-2 text-sm font-medium text-[#1b1b18] dark:bg-slate-900/50 dark:text-[#EDEDEC]">
                 {{ $pendingCount }} pendiente{{ $pendingCount === 1 ? '' : 's' }}
             </span>
         @endif
@@ -62,7 +62,7 @@
     <div class="overflow-hidden rounded-lg border border-[#e3e3e0] shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:border-[#3E3E3A]">
         <div class="overflow-x-auto">
             <table class="w-full min-w-[900px] text-left text-sm">
-                <thead class="bg-[#fff2f2] text-xs font-medium uppercase tracking-wide text-[#706f6c] dark:bg-[#1D0002] dark:text-[#A1A09A]">
+                <thead class="bg-slate-50 dark:bg-slate-900/60 text-xs font-medium uppercase tracking-wide text-[#706f6c] dark:bg-slate-900/50 dark:text-[#A1A09A]">
                     <tr>
                         <th class="px-4 py-3">Solicitante</th>
                         <th class="px-4 py-3">Contacto</th>
@@ -135,7 +135,7 @@
                                         <form action="{{ route('admin.solicitudes-admin.reject', $request) }}" method="POST" class="inline-flex items-center gap-2">
                                             @csrf
                                             <input type="hidden" name="rejection_reason" value="Solicitud rechazada por el administrador principal.">
-                                            <button type="submit" class="rounded-sm border border-[#e3e3e0] px-3 py-1.5 text-xs font-medium text-[#706f6c] hover:bg-[#fff2f2] dark:border-[#3E3E3A] dark:text-[#A1A09A]">
+                                            <button type="submit" class="rounded-sm border border-[#e3e3e0] px-3 py-1.5 text-xs font-medium text-[#706f6c] hover:bg-slate-50 dark:bg-slate-900/60 dark:border-[#3E3E3A] dark:text-[#A1A09A]">
                                                 Rechazar
                                             </button>
                                         </form>

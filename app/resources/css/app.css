@@ -186,9 +186,9 @@
 
 .sc-chip:hover,
 .sc-chip.active {
-    background: #F3BEC7;
-    border-color: #F0ACB8;
-    color: var(--color-text-primary);
+    background: rgba(29, 78, 216, 0.08);
+    border-color: var(--color-brand-primary);
+    color: var(--color-brand-primary);
 }
 
 /* === Pagination (ui-components.md §10) === */
@@ -322,7 +322,7 @@
 }
 
 .admin-nav-item.active {
-    background: rgba(245, 48, 3, 0.08);
+    background: rgba(29, 78, 216, 0.08);
     color: var(--color-brand-primary);
     border-left-color: var(--color-brand-primary);
 }
@@ -656,7 +656,7 @@
 }
 
 .admin-table tbody tr:hover {
-    background: rgba(245, 48, 3, 0.04);
+    background: rgba(29, 78, 216, 0.03);
 }
 
 .admin-table tbody tr:last-child {
@@ -698,7 +698,7 @@
 
 .admin-table .table-action-btn--danger:hover {
     color: var(--color-danger);
-    background: rgba(245, 48, 3, 0.08);
+    background: rgba(185, 28, 28, 0.08);
 }
 
 .admin-table .table-action-btn svg {
@@ -744,25 +744,25 @@
 }
 
 .badge--pendiente {
-    background: rgba(248, 184, 3, 0.12);
+    background: rgba(217, 119, 6, 0.12);
     color: #92600A;
 }
 
 .badge--pendiente .badge-dot {
-    background: #F8B803;
+    background: var(--color-warning);
 }
 
 .badge--completado {
-    background: rgba(22, 163, 74, 0.10);
-    color: #16a34a;
+    background: rgba(21, 128, 61, 0.10);
+    color: var(--color-success);
 }
 
 .badge--completado .badge-dot {
-    background: #16a34a;
+    background: var(--color-success);
 }
 
 .badge--cancelado {
-    background: rgba(245, 48, 3, 0.08);
+    background: rgba(185, 28, 28, 0.08);
     color: var(--color-danger);
 }
 
@@ -826,14 +826,14 @@
 }
 
 .admin-alert--success {
-    background: rgba(22, 163, 74, 0.08);
-    border-left-color: #16a34a;
-    color: #16a34a;
+    background: rgba(21, 128, 61, 0.08);
+    border-left-color: var(--color-success);
+    color: var(--color-success);
 }
 
 .admin-alert--warning {
-    background: rgba(248, 184, 3, 0.10);
-    border-left-color: #F8B803;
+    background: rgba(217, 119, 6, 0.10);
+    border-left-color: var(--color-warning);
     color: #92600A;
 }
 
@@ -844,9 +844,9 @@
 }
 
 .admin-alert--info {
-    background: rgba(2, 132, 199, 0.08);
-    border-left-color: #0284c7;
-    color: #0284c7;
+    background: rgba(3, 105, 161, 0.08);
+    border-left-color: var(--color-info);
+    color: var(--color-info);
 }
 
 .admin-alert-content {
@@ -1643,7 +1643,7 @@
 
 .sc-cart-thumb:hover {
     transform: translateY(-4px) scale(1.05);
-    box-shadow: 0 10px 22px rgba(245, 48, 3, 0.18);
+    box-shadow: 0 10px 22px rgba(29, 78, 216, 0.15);
 }
 
 .sc-cart-thumb:hover img {
@@ -1658,7 +1658,7 @@
 
 .sc-cart-thumb--sm:hover {
     transform: translateY(-2px) scale(1.08);
-    box-shadow: 0 6px 14px rgba(245, 48, 3, 0.15);
+    box-shadow: 0 6px 14px rgba(29, 78, 216, 0.12);
 }
 
 .sc-cart-thumb--placeholder {
@@ -1725,17 +1725,17 @@
 }
 
 .admin-module-label--active {
-    background: rgba(22, 163, 74, 0.12);
+    background: rgba(21, 128, 61, 0.12);
     color: var(--color-success);
 }
 
 .admin-module-label--soon {
-    background: rgba(248, 184, 3, 0.15);
+    background: rgba(217, 119, 6, 0.15);
     color: #92600A;
 }
 
 .admin-module-label--info {
-    background: rgba(2, 132, 199, 0.12);
+    background: rgba(3, 105, 161, 0.12);
     color: var(--color-info);
 }
 

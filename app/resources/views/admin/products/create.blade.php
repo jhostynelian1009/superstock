@@ -17,12 +17,12 @@
             <div class="grid gap-5 sm:grid-cols-2">
                 <div>
                     <label for="sku" class="mb-2 block text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC]">
-                        SKU <span class="text-[#F53003]">*</span>
+                        SKU <span class="text-brand-primary">*</span>
                     </label>
                     <input type="text" name="sku" id="sku" value="{{ old('sku') }}" required
-                        class="w-full rounded-sm border border-[#e3e3e0] bg-white px-4 py-3 text-sm focus:border-[#F53003] focus:outline-none focus:ring-2 focus:ring-[rgba(245,48,3,0.20)] dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC] @error('sku') border-[#F53003] @enderror">
+                        class="w-full rounded-sm border border-[#e3e3e0] bg-white px-4 py-3 text-sm focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/20 dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC] @error('sku') border-brand-primary @enderror">
                     @error('sku')
-                        <p class="mt-1 text-[13px] text-[#F53003]">{{ $message }}</p>
+                        <p class="mt-1 text-[13px] text-brand-primary">{{ $message }}</p>
                     @enderror
                 </div>
                 <div>
@@ -30,48 +30,48 @@
                         Código de barras
                     </label>
                     <input type="text" name="barcode" id="barcode" value="{{ old('barcode') }}"
-                        class="w-full rounded-sm border border-[#e3e3e0] bg-white px-4 py-3 text-sm focus:border-[#F53003] focus:outline-none focus:ring-2 focus:ring-[rgba(245,48,3,0.20)] dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC] @error('barcode') border-[#F53003] @enderror">
+                        class="w-full rounded-sm border border-[#e3e3e0] bg-white px-4 py-3 text-sm focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/20 dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC] @error('barcode') border-brand-primary @enderror">
                     @error('barcode')
-                        <p class="mt-1 text-[13px] text-[#F53003]">{{ $message }}</p>
+                        <p class="mt-1 text-[13px] text-brand-primary">{{ $message }}</p>
                     @enderror
                 </div>
             </div>
 
             <div>
                 <label for="name" class="mb-2 block text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC]">
-                    Nombre <span class="text-[#F53003]">*</span>
+                    Nombre <span class="text-brand-primary">*</span>
                 </label>
                 <input type="text" name="name" id="name" value="{{ old('name') }}" required
-                    class="w-full rounded-sm border border-[#e3e3e0] bg-white px-4 py-3 text-sm focus:border-[#F53003] focus:outline-none focus:ring-2 focus:ring-[rgba(245,48,3,0.20)] dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC] @error('name') border-[#F53003] @enderror">
+                    class="w-full rounded-sm border border-[#e3e3e0] bg-white px-4 py-3 text-sm focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/20 dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC] @error('name') border-brand-primary @enderror">
                 @error('name')
-                    <p class="mt-1 text-[13px] text-[#F53003]">{{ $message }}</p>
+                    <p class="mt-1 text-[13px] text-brand-primary">{{ $message }}</p>
                 @enderror
             </div>
 
             <div class="grid gap-5 sm:grid-cols-2">
                 <div>
                     <label for="category_id" class="mb-2 block text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC]">
-                        Categoría <span class="text-[#F53003]">*</span>
+                        Categoría <span class="text-brand-primary">*</span>
                     </label>
                     <select name="category_id" id="category_id" required
-                        class="w-full rounded-sm border border-[#e3e3e0] bg-white px-4 py-3 text-sm focus:border-[#F53003] focus:outline-none focus:ring-2 focus:ring-[rgba(245,48,3,0.20)] dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC] @error('category_id') border-[#F53003] @enderror">
+                        class="w-full rounded-sm border border-[#e3e3e0] bg-white px-4 py-3 text-sm focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/20 dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC] @error('category_id') border-brand-primary @enderror">
                         <option value="">Selecciona una categoría</option>
                         @foreach ($categories as $category)
                             <option value="{{ $category->id }}" @selected(old('category_id') == $category->id)>{{ $category->name }}</option>
                         @endforeach
                     </select>
                     @error('category_id')
-                        <p class="mt-1 text-[13px] text-[#F53003]">{{ $message }}</p>
+                        <p class="mt-1 text-[13px] text-brand-primary">{{ $message }}</p>
                     @enderror
                 </div>
                 <div>
                     <label for="unit_of_measure" class="mb-2 block text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC]">
-                        Unidad de medida <span class="text-[#F53003]">*</span>
+                        Unidad de medida <span class="text-brand-primary">*</span>
                     </label>
                     <input type="text" name="unit_of_measure" id="unit_of_measure" value="{{ old('unit_of_measure') }}" required placeholder="Unidades, Kilogramos, etc."
-                        class="w-full rounded-sm border border-[#e3e3e0] bg-white px-4 py-3 text-sm focus:border-[#F53003] focus:outline-none focus:ring-2 focus:ring-[rgba(245,48,3,0.20)] dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC] @error('unit_of_measure') border-[#F53003] @enderror">
+                        class="w-full rounded-sm border border-[#e3e3e0] bg-white px-4 py-3 text-sm focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/20 dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC] @error('unit_of_measure') border-brand-primary @enderror">
                     @error('unit_of_measure')
-                        <p class="mt-1 text-[13px] text-[#F53003]">{{ $message }}</p>
+                        <p class="mt-1 text-[13px] text-brand-primary">{{ $message }}</p>
                     @enderror
                 </div>
             </div>
@@ -79,13 +79,13 @@
             <div>
                 <label for="description" class="mb-2 block text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC]">Descripción</label>
                 <textarea name="description" id="description" rows="4"
-                    class="min-h-[120px] w-full resize-y rounded-sm border border-[#e3e3e0] bg-white px-4 py-3 text-sm focus:border-[#F53003] focus:outline-none focus:ring-2 focus:ring-[rgba(245,48,3,0.20)] dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC]">{{ old('description') }}</textarea>
+                    class="min-h-[120px] w-full resize-y rounded-sm border border-[#e3e3e0] bg-white px-4 py-3 text-sm focus:border-brand-primary focus:outline-none focus:ring-2 focus:ring-brand-primary/20 dark:border-[#3E3E3A] dark:bg-[#161615] dark:text-[#EDEDEC]">{{ old('description') }}</textarea>
             </div>
 
             <div class="flex items-center gap-2">
                 <input type="hidden" name="is_active" value="0">
                 <input type="checkbox" name="is_active" id="is_active" value="1" @checked(old('is_active', true))
-                    class="h-4 w-4 rounded-sm border-[#e3e3e0] text-[#F53003] focus:ring-[#F53003]">
+                    class="h-4 w-4 rounded-sm border-[#e3e3e0] text-brand-primary focus:ring-brand-primary">
                 <label for="is_active" class="text-sm font-medium text-[#1b1b18] dark:text-[#EDEDEC]">Producto activo</label>
             </div>
 

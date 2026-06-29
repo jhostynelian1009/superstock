@@ -138,6 +138,37 @@
                 <span class="admin-module-label admin-module-label--active">Activo</span>
             </a>
 
+<<<<<<< HEAD
+=======
+            {{-- Movimientos --}}
+            <a href="{{ route('admin.movimientos.index') }}"
+               class="admin-nav-item {{ request()->routeIs('admin.movimientos.*') ? 'active' : '' }}"
+               aria-label="Movimientos">
+                {{-- Heroicon: arrow-path --}}
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 16.5v-11h-.75m0 0a6 6 0 0 1 12 0v11m-12 0v4.5a1.5 1.5 0 0 0 1.5 1.5h9a1.5 1.5 0 0 0 1.5-1.5v-4.5m-12 0h18M7.5 16.5a1.5 1.5 0 0 1-1.5-1.5V5.25a1.5 1.5 0 0 1 1.5-1.5" />
+                </svg>
+                <span class="admin-nav-item-text">Movimientos</span>
+                <span class="admin-module-label admin-module-label--active">Activo</span>
+            </a>
+
+            @if(($currentAdminUser ?? null)?->isPrimaryAdmin())
+            <a href="{{ route('admin.solicitudes-admin.index') }}"
+               class="admin-nav-item {{ request()->routeIs('admin.solicitudes-admin.*') ? 'active' : '' }}"
+               aria-label="Solicitudes admin">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
+                </svg>
+                <span class="admin-nav-item-text">Solicitudes admin</span>
+                @if(($pendingAdminRequests ?? 0) > 0)
+                    <span class="admin-module-label admin-module-label--soon">{{ $pendingAdminRequests }}</span>
+                @else
+                    <span class="admin-module-label admin-module-label--active">Activo</span>
+                @endif
+            </a>
+            @endif
+
+>>>>>>> Amy-Villalva
             {{-- Separator --}}
             <div class="admin-sidebar-separator"></div>
 

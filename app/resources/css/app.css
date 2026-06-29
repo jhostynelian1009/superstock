@@ -514,20 +514,20 @@
     transform: translateY(-2px);
 }
 
-.kpi-card--ventas::before {
-    background: var(--color-success);
-}
-
-.kpi-card--pedidos::before {
-    background: var(--color-brand-primary);
-}
-
 .kpi-card--productos::before {
+    background: var(--color-info);
+}
+
+.kpi-card--categorias::before {
     background: var(--color-brand-secondary);
 }
 
-.kpi-card--clientes::before {
-    background: var(--color-info);
+.kpi-card--proveedores::before {
+    background: var(--color-brand-primary);
+}
+
+.kpi-card--stock-bajo::before {
+    background: var(--color-warning);
 }
 
 .kpi-card-header {
@@ -552,20 +552,20 @@
     color: #FFFFFF;
 }
 
-.kpi-card--ventas .kpi-card-icon {
-    background: var(--color-success);
-}
-
-.kpi-card--pedidos .kpi-card-icon {
-    background: var(--color-brand-primary);
-}
-
 .kpi-card--productos .kpi-card-icon {
+    background: var(--color-info);
+}
+
+.kpi-card--categorias .kpi-card-icon {
     background: var(--color-brand-secondary);
 }
 
-.kpi-card--clientes .kpi-card-icon {
-    background: var(--color-info);
+.kpi-card--proveedores .kpi-card-icon {
+    background: var(--color-brand-primary);
+}
+
+.kpi-card--stock-bajo .kpi-card-icon {
+    background: var(--color-warning);
 }
 
 .kpi-card-label {
@@ -582,24 +582,10 @@
     margin-bottom: var(--space-2);
 }
 
-.kpi-card-change {
-    display: flex;
-    align-items: center;
-    gap: var(--space-1);
+.kpi-card-description {
     font-size: 0.8125rem;
-}
-
-.kpi-card-change svg {
-    width: 14px;
-    height: 14px;
-}
-
-.kpi-card-change--up {
-    color: var(--color-success);
-}
-
-.kpi-card-change--down {
-    color: var(--color-danger);
+    color: var(--color-text-secondary);
+    margin: 0;
 }
 
 /* ── Admin Data Tables ── */
@@ -776,6 +762,42 @@
 
 .badge--cancelado .badge-dot {
     background: var(--color-danger);
+}
+
+.badge--stock-bajo {
+    background: rgba(217, 119, 6, 0.12);
+    color: #92600A;
+}
+
+.badge--stock-bajo .badge-dot {
+    background: var(--color-warning);
+}
+
+.badge--agotado {
+    background: rgba(185, 28, 28, 0.10);
+    color: var(--color-danger);
+}
+
+.badge--agotado .badge-dot {
+    background: var(--color-danger);
+}
+
+.badge--entrada {
+    background: rgba(22, 163, 74, 0.10);
+    color: #16a34a;
+}
+
+.badge--entrada .badge-dot {
+    background: var(--color-success);
+}
+
+.badge--salida {
+    background: rgba(3, 105, 161, 0.10);
+    color: var(--color-info);
+}
+
+.badge--salida .badge-dot {
+    background: var(--color-info);
 }
 
 /* ── Alerts ── */
@@ -1216,6 +1238,124 @@
     margin-top: var(--space-2);
 }
 
+.dashboard-welcome-role {
+    font-weight: 500;
+    color: var(--color-text-primary);
+}
+
+.dashboard-welcome-separator {
+    margin: 0 var(--space-2);
+}
+
+/* ── Dashboard Empty State ── */
+.dashboard-empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-12) var(--space-6);
+    text-align: center;
+}
+
+.dashboard-empty-state-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-full);
+    background: var(--color-bg-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: var(--space-4);
+}
+
+.dashboard-empty-state-icon svg {
+    width: 24px;
+    height: 24px;
+    color: var(--color-text-secondary);
+}
+
+.dashboard-empty-state-title {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin: 0 0 var(--space-2);
+}
+
+.dashboard-empty-state-text {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    margin: 0;
+    max-width: 28rem;
+}
+
+/* ── Quick Access Cards ── */
+.quick-access-section {
+    margin-top: var(--space-8);
+}
+
+.quick-access-heading {
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin: 0 0 var(--space-6);
+}
+
+.quick-access-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: var(--space-4);
+}
+
+.quick-access-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-5);
+    background: var(--color-bg-surface);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-inset-border);
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 200ms ease-in-out, transform 200ms ease-in-out;
+}
+
+.quick-access-card:hover {
+    box-shadow: var(--shadow-md);
+    transform: translateY(-2px);
+}
+
+.quick-access-card:focus-visible {
+    outline: 2px solid var(--color-brand-primary);
+    outline-offset: 2px;
+}
+
+.quick-access-card-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-md);
+    background: var(--color-bg-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.quick-access-card-icon svg {
+    width: 20px;
+    height: 20px;
+    color: var(--color-brand-primary);
+}
+
+.quick-access-card-title {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.quick-access-card-desc {
+    font-size: 0.8125rem;
+    color: var(--color-text-secondary);
+}
+
 /* ── Product Image Placeholder ── */
 .product-img-placeholder {
     width: 40px;
@@ -1318,6 +1458,10 @@
     .dashboard-grid {
         grid-template-columns: 1fr;
     }
+
+    .quick-access-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 /* Mobile: sidebar oculta con toggle */
@@ -1365,6 +1509,10 @@
         flex: 1;
         justify-content: center;
         min-width: 0;
+    }
+
+    .quick-access-grid {
+        grid-template-columns: 1fr;
     }
 
     .admin-navbar-user-info {

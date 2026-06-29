@@ -61,4 +61,9 @@ class User extends Authenticatable
     {
         return $this->role === self::ROLE_EMPLOYEE;
     }
+
+    public function isPrimaryAdmin(): bool
+    {
+        return $this->isAdmin();
+    }
 }

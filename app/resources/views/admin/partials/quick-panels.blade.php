@@ -1,24 +1,13 @@
 @php
     $panels = [
-        'pedidos' => [
-            'title' => 'Pedidos',
-            'label' => 'Próximamente',
-            'label_variant' => 'soon',
-            'description' => 'Consulta y gestiona los pedidos recibidos por WhatsApp.',
-            'items' => [
-                ['id' => '#SC-1042', 'cliente' => 'María López', 'total' => '$12.50', 'estado' => 'Pendiente'],
-                ['id' => '#SC-1041', 'cliente' => 'Carlos Ruiz', 'total' => '$8.75', 'estado' => 'Entregado'],
-                ['id' => '#SC-1040', 'cliente' => 'Ana Torres', 'total' => '$15.00', 'estado' => 'En preparación'],
-            ],
-        ],
         'usuarios' => [
             'title' => 'Usuarios',
             'label' => 'Próximamente',
             'label_variant' => 'soon',
-            'description' => 'Administra cuentas de administradores y permisos de acceso.',
+            'description' => 'Administra cuentas de administradores y empleados.',
             'items' => [
-                ['nombre' => 'Admin', 'email' => 'admin@snackconnect.com', 'rol' => 'Administrador'],
-                ['nombre' => 'Jaider Tapuyo', 'email' => 'jaidernino2022@gmail.com', 'rol' => 'Administrador'],
+                ['nombre' => 'Administrador General', 'email' => 'admin@superstock.com', 'rol' => 'Administrador'],
+                ['nombre' => 'Juan Pérez', 'email' => 'empleado1@superstock.com', 'rol' => 'Empleado'],
             ],
         ],
         'configuracion' => [
@@ -27,8 +16,8 @@
             'label_variant' => 'soon',
             'description' => 'Ajustes rápidos del sistema sin salir del dashboard.',
             'settings' => [
-                ['key' => 'WHATSAPP_PHONE', 'value' => config('services.whatsapp.phone', '593998128034'), 'hint' => 'Número de pedidos WhatsApp'],
-                ['key' => 'Moneda', 'value' => 'USD ($)', 'hint' => 'Formato de precios en catálogo'],
+                ['key' => 'Zona Horaria', 'value' => config('app.timezone', 'UTC'), 'hint' => 'Registro de movimientos'],
+                ['key' => 'Moneda', 'value' => 'USD ($)', 'hint' => 'Valorización de inventario'],
                 ['key' => 'Entorno', 'value' => config('app.env'), 'hint' => 'Modo de ejecución actual'],
             ],
         ],
@@ -39,8 +28,8 @@
             'description' => 'Alertas recientes del sistema.',
             'items' => [
                 ['texto' => 'Stock bajo en 3 productos', 'tiempo' => 'Hace 2 h', 'tipo' => 'warning'],
-                ['texto' => 'Catálogo sincronizado correctamente', 'tiempo' => 'Hace 5 h', 'tipo' => 'success'],
-                ['texto' => 'Nuevo pedido vía WhatsApp', 'tiempo' => 'Ayer', 'tipo' => 'order'],
+                ['texto' => 'Inventario conciliado correctamente', 'tiempo' => 'Hace 5 h', 'tipo' => 'success'],
+                ['texto' => 'Nuevo movimiento registrado', 'tiempo' => 'Ayer', 'tipo' => 'info'],
             ],
         ],
     ];
@@ -71,18 +60,7 @@
         </div>
 
         <div class="admin-quick-panel-body">
-            @if($id === 'pedidos')
-                @foreach($panel['items'] as $item)
-                    <div class="admin-quick-panel-card">
-                        <div class="admin-quick-panel-card-top">
-                            <span class="admin-quick-panel-card-id">{{ $item['id'] }}</span>
-                            <span class="admin-module-label admin-module-label--{{ strtolower($item['estado']) === 'entregado' ? 'active' : 'soon' }}">{{ $item['estado'] }}</span>
-                        </div>
-                        <p class="admin-quick-panel-card-title">{{ $item['cliente'] }}</p>
-                        <p class="admin-quick-panel-card-meta">Total: {{ $item['total'] }}</p>
-                    </div>
-                @endforeach
-            @elseif($id === 'usuarios')
+            @if($id === 'usuarios')
                 @foreach($panel['items'] as $item)
                     <div class="admin-quick-panel-card">
                         <p class="admin-quick-panel-card-title">{{ $item['nombre'] }}</p>

@@ -8,9 +8,11 @@ use App\Http\Controllers\Client\OrderController as ClientOrderController;
 use App\Http\Controllers\Client\ProfileController as ClientProfileController;
 use App\Http\Controllers\Admin\AdminAccessRequestController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\InventoryController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
+use App\Http\Controllers\Admin\SupplierController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\WhatsAppController;
 use Illuminate\Support\Facades\Route;
@@ -89,4 +91,9 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
     Route::resource('productos', ProductController::class)
         ->parameters(['productos' => 'producto'])
         ->except(['show']);
+    Route::resource('proveedores', SupplierController::class)
+        ->parameters(['proveedores' => 'proveedor'])
+        ->except(['show']);
+    Route::get('inventario', [InventoryController::class, 'index'])->name('inventario.index');
 });
+

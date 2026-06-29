@@ -57,7 +57,6 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/pedidos', [AdminOrderController::class, 'index'])->name('admin.pedidos.index');
     Route::get('/pedidos/{pedido}', [AdminOrderController::class, 'show'])->name('admin.pedidos.show');
-    Route::get('/usuarios', [UserController::class, 'index'])->name('admin.usuarios.index');
     Route::get('/configuracion', fn () => redirect()->route('admin.dashboard', ['panel' => 'configuracion']))
         ->name('admin.configuracion.index');
 
@@ -77,4 +76,7 @@ Route::middleware(['auth', 'admin'])->prefix('admin')->name('admin.')->group(fun
         ->except(['show']);
     Route::resource('movimientos', InventoryMovementController::class)
         ->parameters(['movimientos' => 'movimiento']);
+    Route::resource('usuarios', UserController::class)
+        ->parameters(['usuarios' => 'usuario']);
+    Route::patch('/usuarios/{usuario}/toggle-active', [UserController::class, 'toggleActive'])->name('usuarios.toggle-active');
 });

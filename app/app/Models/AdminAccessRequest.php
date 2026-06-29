@@ -25,6 +25,7 @@ class AdminAccessRequest extends Model
         'expires_at',
         'rejection_reason',
         'completed_at',
+        'permissions',
     ];
 
     protected $casts = [
@@ -33,6 +34,7 @@ class AdminAccessRequest extends Model
         'completed_at' => 'datetime',
         'created_at' => 'datetime',
         'updated_at' => 'datetime',
+        'permissions' => 'array',
     ];
 
     public const STATUS_PENDING = 'pending';

@@ -99,9 +99,35 @@
                             </td>
                             <td class="px-4 py-3">
                                 @if($request->isPending())
-                                    <div class="flex justify-end gap-2">
-                                        <form action="{{ route('admin.solicitudes-admin.approve', $request) }}" method="POST">
+                                    <div class="flex justify-end items-end gap-4">
+                                        <form action="{{ route('admin.solicitudes-admin.approve', $request) }}" method="POST" class="flex flex-col gap-2">
                                             @csrf
+                                            <div class="flex flex-col gap-1 p-2.5 rounded-sm border border-[#e3e3e0] bg-[#FDFDFC] dark:border-[#3E3E3A] dark:bg-[#161615] text-left text-xs text-[#1b1b18] dark:text-[#EDEDEC] min-w-[240px]">
+                                                <span class="font-semibold text-xs mb-1 text-[#706f6c] dark:text-[#A1A09A]">Módulos permitidos:</span>
+                                                <div class="grid grid-cols-2 gap-x-2 gap-y-1">
+                                                    <label class="flex items-center gap-1.5 cursor-pointer">
+                                                        <input type="checkbox" name="permissions[]" value="productos" checked class="rounded border-gray-300"> Productos
+                                                    </label>
+                                                    <label class="flex items-center gap-1.5 cursor-pointer">
+                                                        <input type="checkbox" name="permissions[]" value="categorias" checked class="rounded border-gray-300"> Categorías
+                                                    </label>
+                                                    <label class="flex items-center gap-1.5 cursor-pointer">
+                                                        <input type="checkbox" name="permissions[]" value="proveedores" checked class="rounded border-gray-300"> Proveedores
+                                                    </label>
+                                                    <label class="flex items-center gap-1.5 cursor-pointer">
+                                                        <input type="checkbox" name="permissions[]" value="inventario" checked class="rounded border-gray-300"> Inventario
+                                                    </label>
+                                                    <label class="flex items-center gap-1.5 cursor-pointer">
+                                                        <input type="checkbox" name="permissions[]" value="movimientos" checked class="rounded border-gray-300"> Movimientos
+                                                    </label>
+                                                    <label class="flex items-center gap-1.5 cursor-pointer">
+                                                        <input type="checkbox" name="permissions[]" value="usuarios" class="rounded border-gray-300"> Usuarios
+                                                    </label>
+                                                    <label class="flex items-center gap-1.5 cursor-pointer col-span-2">
+                                                        <input type="checkbox" name="permissions[]" value="solicitudes-admin" class="rounded border-gray-300"> Solicitudes Admin
+                                                    </label>
+                                                </div>
+                                            </div>
                                             <button type="submit" class="rounded-sm bg-[#16a34a] px-3 py-1.5 text-xs font-medium text-white hover:bg-green-700">
                                                 Aprobar y generar código
                                             </button>
@@ -111,6 +137,20 @@
                                             <input type="hidden" name="rejection_reason" value="Solicitud rechazada por el administrador principal.">
                                             <button type="submit" class="rounded-sm border border-[#e3e3e0] px-3 py-1.5 text-xs font-medium text-[#706f6c] hover:bg-[#fff2f2] dark:border-[#3E3E3A] dark:text-[#A1A09A]">
                                                 Rechazar
+                                            </button>
+                                        </form>
+                                    </div>
+                                @elseif($request->isApproved())
+                                    <div class="flex items-center justify-end gap-3">
+                                        <span class="text-xs text-[#706f6c] dark:text-[#A1A09A]">
+                                            @if($request->approver)
+                                                Por {{ $request->approver->name }}
+                                            @endif
+                                        </span>
+                                        <form action="{{ route('admin.solicitudes-admin.resend', $request) }}" method="POST">
+                                            @csrf
+                                            <button type="submit" class="rounded-sm bg-brand-primary px-3 py-1.5 text-xs font-medium text-white hover:bg-brand-primary-hover">
+                                                Regenerar código
                                             </button>
                                         </form>
                                     </div>

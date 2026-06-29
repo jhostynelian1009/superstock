@@ -54,13 +54,6 @@ class UserFactory extends Factory
         ]);
     }
 
-    public function client(): static
-    {
-        return $this->state(fn () => [
-            'role' => User::ROLE_CLIENT,
-            'is_primary_admin' => false,
-        ]);
-    }
 
     public function employee(): static
     {

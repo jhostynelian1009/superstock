@@ -3,7 +3,6 @@
 namespace App\Providers;
 
 use App\Models\AdminAccessRequest;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -21,14 +20,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        view()->composer('layouts.public', function ($view): void {
-            $cart = Session::get('cart', []);
-            $cartCount = array_sum(array_column($cart, 'quantity'));
-
-            $view->with([
-                'cartCount' => $cartCount,
-                'cartTotal' => array_reduce($cart, fn (float $sum, array $item) => $sum + ($item['price'] * $item['quantity']), 0.0),
-            ]);
+        \Illuminate\Auth\Middleware\RedirectIfAuthenticated::redirectUsing(function () {
+            return route('admin.dashboard');
         });
 
         view()->composer('layouts.admin', function ($view): void {
@@ -44,18 +37,21 @@ class AppServiceProvider extends ServiceProvider
                     ->take(5)
                     ->get()
                     ->map(fn (AdminAccessRequest $request) => [
-                        'texto' => $request->name.' solicita acceso de administrador',
+                        'id'     => $request->id,
+                        'name'   => $request->name,
+                        'email'  => $request->email,
+                        'texto'  => $request->name . ' solicita acceso de administrador',
                         'tiempo' => $request->created_at->diffForHumans(),
-                        'tipo' => 'warning',
-                        'url' => route('admin.solicitudes-admin.index'),
+                        'tipo'   => 'warning',
+                        'url'    => route('admin.solicitudes-admin.index'),
                     ])
                     ->all();
             }
 
             $view->with([
                 'pendingAdminRequests' => $pendingAdminRequests,
-                'adminNotifications' => $adminNotifications,
-                'currentAdminUser' => $user,
+                'adminNotifications'   => $adminNotifications,
+                'currentAdminUser'     => $user,
             ]);
         });
     }

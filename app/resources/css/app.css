@@ -9,44 +9,44 @@
     --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol', 'Noto Color Emoji';
 
-    /* === Brand Colors (design-system.md §2.1) === */
-    --color-brand-primary: #F53003;
-    --color-brand-primary-hover: #D42800;
-    --color-brand-secondary: #F8B803;
-    --color-brand-rose: #F0ACB8;
-    --color-brand-rose-light: #F3BEC7;
-    --color-brand-dark-red: #1D0002;
+    /* === Brand Colors === */
+    --color-brand-primary: #1D4ED8;
+    --color-brand-primary-hover: #1E40AF;
+    --color-brand-secondary: #0F766E;
+    --color-brand-rose: #CBD5E1;
+    --color-brand-rose-light: #E2E8F0;
+    --color-brand-dark-red: #0F172A;
     --color-brand-whatsapp: #25D366;
     --color-brand-whatsapp-hover: #1DA851;
 
-    /* === Neutral Colors (design-system.md §2.2) === */
-    --color-bg-base: #FDFDFC;
+    /* === Neutral Colors === */
+    --color-bg-base: #F8FAFC;
     --color-bg-surface: #FFFFFF;
-    --color-bg-muted: #fff2f2;
-    --color-bg-subtle: #dbdbd7;
-    --color-text-primary: #1b1b18;
-    --color-text-secondary: #706f6c;
+    --color-bg-muted: #F1F5F9;
+    --color-bg-subtle: #E2E8F0;
+    --color-text-primary: #0F172A;
+    --color-text-secondary: #475569;
     --color-text-inverse: #FFFFFF;
-    --color-border-default: #e3e3e0;
-    --color-border-strong: rgba(25, 20, 0, 0.21);
+    --color-border-default: #CBD5E1;
+    --color-border-strong: rgba(15, 23, 42, 0.15);
 
-    /* === Semantic Colors (design-system.md §2.3) === */
-    --color-success: #16a34a;
-    --color-warning: #F8B803;
-    --color-danger: #F53003;
-    --color-info: #0284c7;
+    /* === Semantic Colors === */
+    --color-success: #15803D;
+    --color-warning: #D97706;
+    --color-danger: #B91C1C;
+    --color-info: #0369A1;
 
-    /* === Shadows (design-system.md §6) === */
+    /* === Shadows === */
     --shadow-micro: 0 1px rgba(0, 0, 0, 0.03);
     --shadow-xs: 0px 0px 1px rgba(0, 0, 0, 0.03), 0px 1px 2px rgba(0, 0, 0, 0.06);
     --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.10), 0 1px 2px -1px rgba(0, 0, 0, 0.10);
     --shadow-elevated: 0 4px 6px -1px rgba(0, 0, 0, 0.10), 0 2px 4px -2px rgba(0, 0, 0, 0.10);
     --shadow-dropdown: 0 10px 15px -3px rgba(0, 0, 0, 0.10), 0 4px 6px -4px rgba(0, 0, 0, 0.10);
     --shadow-modal: 0 20px 25px -5px rgba(0, 0, 0, 0.10), 0 8px 10px -6px rgba(0, 0, 0, 0.10);
-    --shadow-inset: inset 0px 0px 0px 1px rgba(26, 26, 0, 0.16);
+    --shadow-inset: inset 0px 0px 0px 1px rgba(15, 23, 42, 0.10);
 }
 
-/* === Spacing & Radius (design-system.md §4–5) — usados por panel admin === */
+/* === Spacing & Radius — usados por panel admin === */
 :root {
     --space-1: 0.25rem;
     --space-2: 0.5rem;
@@ -65,19 +65,25 @@
     --radius-full: 9999px;
 }
 
-/* === Dark Mode Overrides (design-system.md §8) === */
+/* === Dark Mode Overrides === */
 @media (prefers-color-scheme: dark) {
     :root {
-        --color-bg-base: #0a0a0a;
-        --color-bg-surface: #161615;
-        --color-bg-muted: #1D0002;
-        --color-bg-subtle: #3E3E3A;
-        --color-text-primary: #EDEDEC;
-        --color-text-secondary: #A1A09A;
-        --color-text-inverse: #1C1C1A;
-        --color-border-default: #3E3E3A;
-        --color-border-strong: rgba(255, 250, 237, 0.18);
-        --color-brand-primary: #FF4433;
+        --color-brand-primary: #60A5FA;
+        --color-brand-primary-hover: #93C5FD;
+        --color-brand-secondary: #2DD4BF;
+        --color-bg-base: #0F172A;
+        --color-bg-surface: #1E293B;
+        --color-bg-muted: #334155;
+        --color-bg-subtle: #475569;
+        --color-text-primary: #F8FAFC;
+        --color-text-secondary: #CBD5E1;
+        --color-text-inverse: #0F172A;
+        --color-border-default: #475569;
+        --color-border-strong: rgba(248, 250, 252, 0.15);
+        --color-success: #22C55E;
+        --color-warning: #FBBF24;
+        --color-danger: #EF4444;
+        --color-info: #38BDF8;
     }
 }
 
@@ -136,13 +142,13 @@
 }
 
 .sc-btn-accent {
-    background: #F53003;
-    color: #FFFFFF;
-    border: 1px solid #F53003;
+    background: var(--color-brand-primary);
+    color: var(--color-text-inverse);
+    border: 1px solid var(--color-brand-primary);
 }
 
 .sc-btn-accent:hover {
-    background: #D42800;
+    background: var(--color-brand-primary-hover);
 }
 
 .sc-btn-whatsapp {
@@ -211,8 +217,8 @@
 }
 
 .sc-pagination .active span {
-    background: #F53003;
-    color: #FFFFFF;
+    background: var(--color-brand-primary);
+    color: var(--color-text-inverse);
 }
 
 .sc-pagination .disabled span {
@@ -832,9 +838,9 @@
 }
 
 .admin-alert--danger {
-    background: rgba(245, 48, 3, 0.08);
-    border-left-color: #F53003;
-    color: #F53003;
+    background: rgba(185, 28, 28, 0.08);
+    border-left-color: var(--color-danger);
+    color: var(--color-danger);
 }
 
 .admin-alert--info {
@@ -1683,7 +1689,7 @@
     height: 1.125rem;
     padding: 0 0.25rem;
     border-radius: 999px;
-    background: var(--color-brand-primary, #f53003);
+    background: var(--color-brand-primary);
     color: #fff;
     font-size: 0.625rem;
     font-weight: 700;
@@ -1935,11 +1941,193 @@
 }
 
 .sc-btn-danger {
-    background: var(--color-brand-primary);
-    border-color: var(--color-brand-primary);
+    background: var(--color-danger);
+    border-color: var(--color-danger);
+    color: var(--color-text-inverse);
 }
 
 .sc-btn-danger:hover {
-    background: #d42800;
-    border-color: #d42800;
+    opacity: 0.9;
+}
+
+/* ============================================================
+   PREMIUM INTERACTIONS & ANIMATIONS SYSTEM
+   ============================================================ */
+
+/* --- Keyframes --- */
+@keyframes sc-fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes sc-scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.97);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes sc-pulseGlow {
+    0%, 100% {
+        box-shadow: 0 0 0 0 rgba(29, 78, 216, 0.4);
+    }
+    50% {
+        box-shadow: 0 0 0 6px rgba(29, 78, 216, 0);
+    }
+}
+
+@keyframes sc-badgePulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.2);
+        opacity: 0.7;
+    }
+}
+
+/* --- Base Enhancements --- */
+body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* --- Sidebar Interactions --- */
+.admin-sidebar {
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.admin-nav-item {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: var(--radius-md);
+}
+
+.admin-nav-item:hover svg {
+    transform: scale(1.1) rotate(2deg);
+    color: var(--color-brand-primary);
+}
+
+.admin-nav-item svg {
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+
+/* --- Dashboard Welcome & Header Animation --- */
+.dashboard-welcome {
+    animation: sc-fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* --- KPI Cards Premium Styling & Animations --- */
+.kpi-grid {
+    perspective: 1000px;
+}
+
+.kpi-card {
+    opacity: 0;
+    animation: sc-fadeInUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, border-color 0.3s ease;
+    border: 1px solid var(--color-border-default);
+    box-shadow: var(--shadow-card);
+}
+
+/* Staggered entrance for KPI cards */
+.kpi-grid > div:nth-child(1) { animation-delay: 0.05s; }
+.kpi-grid > div:nth-child(2) { animation-delay: 0.12s; }
+.kpi-grid > div:nth-child(3) { animation-delay: 0.19s; }
+.kpi-grid > div:nth-child(4) { animation-delay: 0.26s; }
+
+.kpi-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--color-brand-primary);
+    box-shadow: 0 12px 20px -10px rgba(29, 78, 216, 0.15), 
+                0 4px 12px -5px rgba(29, 78, 216, 0.05);
+}
+
+.kpi-card::before {
+    transition: height 0.2s ease;
+}
+
+.kpi-card:hover::before {
+    height: 5px;
+}
+
+.kpi-card-icon {
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.kpi-card:hover .kpi-card-icon {
+    transform: scale(1.12) rotate(-3deg);
+}
+
+/* --- Data Table Animation --- */
+.admin-table-wrapper {
+    opacity: 0;
+    animation: sc-scaleIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+    border: 1px solid var(--color-border-default);
+    box-shadow: var(--shadow-elevated);
+}
+
+.admin-table tbody tr {
+    transition: background-color 0.15s ease, transform 0.2s ease;
+}
+
+.admin-table tbody tr:hover {
+    background-color: var(--color-bg-muted) !important;
+}
+
+/* --- Badge Micro-animations --- */
+.badge {
+    transition: all 0.2s ease;
+}
+
+.badge:hover {
+    transform: scale(1.04);
+}
+
+.badge-dot {
+    position: relative;
+}
+
+.badge--agotado .badge-dot::after,
+.badge--stock-bajo .badge-dot::after {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: inherit;
+    border: 1px solid currentColor;
+    animation: sc-badgePulse 2s infinite ease-in-out;
+}
+
+/* --- Quick Panels (Transitions) --- */
+.admin-quick-panel {
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+}
+
+/* --- Buttons & Inputs --- */
+.sc-btn {
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.sc-btn:active {
+    transform: scale(0.97);
+}
+
+.sc-btn-primary {
+    background-color: var(--color-brand-primary) !important;
+    border-color: var(--color-brand-primary) !important;
+    color: var(--color-text-inverse) !important;
+}
+
+.sc-btn-primary:hover {
+    background-color: var(--color-brand-primary-hover) !important;
+    box-shadow: 0 4px 10px rgba(29, 78, 216, 0.25);
 }

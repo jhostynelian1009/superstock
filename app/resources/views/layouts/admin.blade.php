@@ -40,6 +40,7 @@
             </a>
 
             {{-- Productos --}}
+            @if(auth()->user()?->hasPermissionTo('productos'))
             <a href="{{ route('admin.productos.index') }}"
                class="admin-nav-item {{ request()->routeIs('admin.productos.*') ? 'active' : '' }}"
                aria-label="Productos">
@@ -50,8 +51,10 @@
                 <span class="admin-nav-item-text">Productos</span>
                 <span class="admin-module-label admin-module-label--active">Activo</span>
             </a>
+            @endif
 
             {{-- Categorías --}}
+            @if(auth()->user()?->hasPermissionTo('categorias'))
             <a href="{{ route('admin.categorias.index') }}"
                class="admin-nav-item {{ request()->routeIs('admin.categorias.*') ? 'active' : '' }}"
                aria-label="Categorías">
@@ -63,8 +66,10 @@
                 <span class="admin-nav-item-text">Categorías</span>
                 <span class="admin-module-label admin-module-label--active">Activo</span>
             </a>
+            @endif
 
             {{-- Proveedores --}}
+            @if(auth()->user()?->hasPermissionTo('proveedores'))
             <a href="{{ route('admin.proveedores.index') }}"
                class="admin-nav-item {{ request()->routeIs('admin.proveedores.*') ? 'active' : '' }}"
                aria-label="Proveedores">
@@ -75,8 +80,10 @@
                 <span class="admin-nav-item-text">Proveedores</span>
                 <span class="admin-module-label admin-module-label--active">Activo</span>
             </a>
+            @endif
 
             {{-- Inventario --}}
+            @if(auth()->user()?->hasPermissionTo('inventario'))
             <a href="{{ route('admin.inventario.index') }}"
                class="admin-nav-item {{ request()->routeIs('admin.inventario.*') ? 'active' : '' }}"
                aria-label="Inventario">
@@ -87,19 +94,12 @@
                 <span class="admin-nav-item-text">Inventario</span>
                 <span class="admin-module-label admin-module-label--active">Activo</span>
             </a>
+            @endif
 
-            {{-- Pedidos --}}
-            <a href="{{ route('admin.pedidos.index') }}"
-               class="admin-nav-item {{ request()->routeIs('admin.pedidos.*') ? 'active' : '' }}"
-               aria-label="Pedidos">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M9 12h3.75M9 15h3.75M9 18h3.75m3 .75H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08m-5.801 0c-.065.21-.1.433-.1.664 0 .414.336.75.75.75h4.5a.75.75 0 0 0 .75-.75 2.25 2.25 0 0 0-.1-.664m-5.8 0A2.251 2.251 0 0 1 13.5 2.25H15a2.251 2.251 0 0 1 2.15 1.586m-5.8 0c-.376.023-.75.05-1.124.08C9.095 4.01 8.25 4.973 8.25 6.108V8.25m0 0H4.875c-.621 0-1.125.504-1.125 1.125v11.25c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V9.375c0-.621-.504-1.125-1.125-1.125H8.25Z" />
-                </svg>
-                <span class="admin-nav-item-text">Pedidos</span>
-                <span class="admin-module-label admin-module-label--active">Activo</span>
-            </a>
+
 
             {{-- Usuarios --}}
+            @if(auth()->user()?->hasPermissionTo('usuarios'))
             <a href="{{ route('admin.usuarios.index') }}"
                class="admin-nav-item {{ request()->routeIs('admin.usuarios.*') ? 'active' : '' }}"
                aria-label="Usuarios">
@@ -109,8 +109,10 @@
                 <span class="admin-nav-item-text">Usuarios</span>
                 <span class="admin-module-label admin-module-label--active">Activo</span>
             </a>
+            @endif
 
             {{-- Movimientos --}}
+            @if(auth()->user()?->hasPermissionTo('movimientos'))
             <a href="{{ route('admin.movimientos.index') }}"
                class="admin-nav-item {{ request()->routeIs('admin.movimientos.*') ? 'active' : '' }}"
                aria-label="Movimientos">
@@ -121,8 +123,9 @@
                 <span class="admin-nav-item-text">Movimientos</span>
                 <span class="admin-module-label admin-module-label--active">Activo</span>
             </a>
+            @endif
 
-            @if(($currentAdminUser ?? null)?->isPrimaryAdmin())
+            @if(($currentAdminUser ?? null)?->isPrimaryAdmin() && auth()->user()?->hasPermissionTo('solicitudes-admin'))
             <a href="{{ route('admin.solicitudes-admin.index') }}"
                class="admin-nav-item {{ request()->routeIs('admin.solicitudes-admin.*') ? 'active' : '' }}"
                aria-label="Solicitudes admin">
@@ -195,10 +198,28 @@
 
             {{-- User Menu --}}
             <div class="admin-navbar-user">
-                <button type="button" class="admin-hamburger" style="display: flex;" data-admin-panel-open="notificaciones" aria-label="Notificaciones">
+                <button type="button" class="admin-hamburger admin-notif-btn" style="display: flex; position: relative;" data-admin-panel-open="notificaciones" aria-label="Notificaciones" id="notif-bell-btn">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" style="width: 20px; height: 20px;">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M14.857 17.082a23.848 23.848 0 0 0 5.454-1.31A8.967 8.967 0 0 1 18 9.75V9A6 6 0 0 0 6 9v.75a8.967 8.967 0 0 1-2.312 6.022c1.733.64 3.56 1.085 5.455 1.31m5.714 0a24.255 24.255 0 0 1-5.714 0m5.714 0a3 3 0 1 1-5.714 0" />
                     </svg>
+                    @if(($pendingAdminRequests ?? 0) > 0)
+                        <span id="notif-badge" style="
+                            position: absolute;
+                            top: -4px; right: -4px;
+                            min-width: 18px; height: 18px;
+                            padding: 0 4px;
+                            border-radius: 999px;
+                            background: var(--color-danger);
+                            color: #fff;
+                            font-size: 0.65rem;
+                            font-weight: 700;
+                            display: inline-flex;
+                            align-items: center;
+                            justify-content: center;
+                            border: 2px solid var(--color-bg-surface);
+                            animation: sc-badgePulse 2s infinite ease-in-out;
+                        ">{{ $pendingAdminRequests }}</span>
+                    @endif
                 </button>
 
                 <button type="button" data-admin-panel-open="configuracion" style="display: flex; align-items: center; gap: var(--space-3); border: none; background: none; cursor: pointer; color: inherit; font: inherit; padding: 0;">
@@ -270,5 +291,26 @@
             }
         });
     </script>
+
+    {{-- Auto-open notifications panel when a code was just generated --}}
+    @if(session('generated_admin_code'))
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Wait a short tick so ScLabelModals is initialized
+            setTimeout(function () {
+                const panel = document.getElementById('admin-panel-notificaciones');
+                if (panel && window.ScLabelModals) {
+                    window.ScLabelModals.open('notificaciones');
+                } else if (panel) {
+                    // Fallback: add is-open class directly
+                    panel.setAttribute('aria-hidden', 'false');
+                    panel.classList.add('is-open');
+                    const overlay = document.getElementById('admin-panel-overlay');
+                    if (overlay) { overlay.classList.add('is-open'); overlay.setAttribute('aria-hidden', 'false'); }
+                }
+            }, 150);
+        });
+    </script>
+    @endif
 </body>
 </html>

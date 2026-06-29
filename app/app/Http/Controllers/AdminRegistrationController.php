@@ -111,6 +111,7 @@ class AdminRegistrationController extends Controller
                 'password' => $accessRequest->password,
                 'role' => User::ROLE_ADMIN,
                 'is_primary_admin' => false,
+                'permissions' => $accessRequest->permissions,
             ]);
 
             $accessRequest->update([

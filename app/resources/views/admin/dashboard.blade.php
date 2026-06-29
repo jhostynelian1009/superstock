@@ -180,7 +180,7 @@
                     <span class="quick-access-card-desc">Organizar clasificaciones</span>
                 </a>
 
-                <a href="#" class="quick-access-card">
+                <a href="{{ route('admin.proveedores.index') }}" class="quick-access-card">
                     <div class="quick-access-card-icon" aria-hidden="true">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 21h16.5M4.5 3h15M5.25 3v18m13.5-18v18M9 6.75h1.5m-1.5 3h1.5m-1.5 3h1.5m3-6H15m-1.5 3H15m-1.5 3H15M9 21v-3.375c0-.621.504-1.125 1.125-1.125h3.75c.621 0 1.125.504 1.125 1.125V21" />
@@ -191,7 +191,7 @@
                 </a>
             @endif
 
-            <a href="#" class="quick-access-card">
+            <a href="{{ route('admin.inventario.index') }}" class="quick-access-card">
                 <div class="quick-access-card-icon" aria-hidden="true">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M20.25 7.5l-.625 10.632a2.25 2.25 0 0 1-2.247 2.118H6.622a2.25 2.25 0 0 1-2.247-2.118L3.75 7.5M10 11.25h4M3.375 7.5h17.25c.621 0 1.125-.504 1.125-1.125v-1.5a1.125 1.125 0 0 0-1.125-1.125H3.375a1.125 1.125 0 0 0-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125Z" />
@@ -201,7 +201,7 @@
                 <span class="quick-access-card-desc">Consultar existencias</span>
             </a>
 
-            <a href="#" class="quick-access-card">
+            <a href="{{ route('admin.movimientos.index') }}" class="quick-access-card">
                 <div class="quick-access-card-icon" aria-hidden="true">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M7.5 21 3 16.5m0 0L7.5 12M3 16.5h13.5m0-13.5L21 7.5m0 0L16.5 12M21 7.5H7.5" />
